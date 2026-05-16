@@ -1,0 +1,14 @@
+{
+  "block.vivariumlibera.calamus": "Аир болотный",
+  "block.vivariumlibera.cattail": "Рогоз",
+  "block.vivariumlibera.datura": "Дурман",
+  "block.vivariumlibera.fireweed": "Иван-чай",
+  "block.vivariumlibera.henbane": "Белена",
+  "block.vivariumlibera.nettle": "Крапива",
+  "block.vivariumlibera.st_johns_wort": "Зверобой",
+  "block.vivariumlibera.wormwood": "Полынь",
+  "item.vivariumlibera.knife": "Нож",
+  "itemGroup.vivariumlibera": "Vivarium Libera",
+  "itemGroup.vivariumlibera.tools": "Vivarium Libera: Инструменты",
+  "modmenu.nameTranslation.vivariumlibera": "Vivarium Libera"
+}

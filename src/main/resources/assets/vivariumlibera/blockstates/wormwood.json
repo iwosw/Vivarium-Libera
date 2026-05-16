@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "alt=false,amount=1,facing=north": { "model": "vivariumlibera:block/wormwood" },
+    "alt=false,amount=1,facing=east": { "model": "vivariumlibera:block/wormwood" },
+    "alt=false,amount=1,facing=south": { "model": "vivariumlibera:block/wormwood" },
+    "alt=false,amount=1,facing=west": { "model": "vivariumlibera:block/wormwood" },
+    "alt=true,amount=1,facing=north": { "model": "vivariumlibera:block/wormwood_b" },
+    "alt=true,amount=1,facing=east": { "model": "vivariumlibera:block/wormwood_b" },
+    "alt=true,amount=1,facing=south": { "model": "vivariumlibera:block/wormwood_b" },
+    "alt=true,amount=1,facing=west": { "model": "vivariumlibera:block/wormwood_b" },
+    "alt=false,amount=2,facing=north": { "model": "vivariumlibera:block/wormwood_double", "y": 0 },
+    "alt=false,amount=2,facing=east": { "model": "vivariumlibera:block/wormwood_double", "y": 90 },
+    "alt=false,amount=2,facing=south": { "model": "vivariumlibera:block/wormwood_double", "y": 180 },
+    "alt=false,amount=2,facing=west": { "model": "vivariumlibera:block/wormwood_double", "y": 270 },
+    "alt=true,amount=2,facing=north": { "model": "vivariumlibera:block/wormwood_double", "y": 90 },
+    "alt=true,amount=2,facing=east": { "model": "vivariumlibera:block/wormwood_double", "y": 180 },
+    "alt=true,amount=2,facing=south": { "model": "vivariumlibera:block/wormwood_double", "y": 270 },
+    "alt=true,amount=2,facing=west": { "model": "vivariumlibera:block/wormwood_double", "y": 0 }
+  }
+}
