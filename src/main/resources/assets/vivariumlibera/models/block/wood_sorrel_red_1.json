@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/flowerbed_1",
+  "render_type": "cutout",
+  "textures": {
+    "flowerbed": "vivariumlibera:item/plants/wood_sorrel_red",
+    "stem": "minecraft:block/pink_petals_stem"
+  }
+}
