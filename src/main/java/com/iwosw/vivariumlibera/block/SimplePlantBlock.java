@@ -15,8 +15,15 @@ public final class SimplePlantBlock extends BushBlock {
     public static final MapCodec<SimplePlantBlock> CODEC = simpleCodec(SimplePlantBlock::new);
     public static final BooleanProperty BLOOMING = BooleanProperty.create("blooming");
 
+    private final boolean requiresNearbyWater;
+
     public SimplePlantBlock(BlockBehaviour.Properties properties) {
+        this(properties, false);
+    }
+
+    public SimplePlantBlock(BlockBehaviour.Properties properties, boolean requiresNearbyWater) {
         super(properties);
+        this.requiresNearbyWater = requiresNearbyWater;
         this.registerDefaultState(this.defaultBlockState().setValue(BLOOMING, true));
     }
 
@@ -30,6 +37,12 @@ public final class SimplePlantBlock extends BushBlock {
         if (!state.getValue(BLOOMING)) {
             level.setBlock(pos, state.setValue(BLOOMING, true), 3);
         }
+    }
+
+    @Override
+    protected boolean canSurvive(BlockState state, net.minecraft.world.level.LevelReader level, BlockPos pos) {
+        return super.canSurvive(state, level, pos)
+                && (!requiresNearbyWater || PlantPlacementRules.hasNearbyWater(level, pos));
     }
 
     @Override

@@ -33,7 +33,9 @@ public abstract class BlockMaterialMappingMixin {
             "yarrow_pink",
             "yarrow_yellow",
             "lycoris",
-            "crows_eye"
+            "crows_eye",
+            "thistle",
+            "mint"
     };
 
     private static final String[] TALL_PLANTS = {
@@ -46,7 +48,8 @@ public abstract class BlockMaterialMappingMixin {
             "bell_flower_white",
             "valerian_white",
             "valerian_pink",
-            "valerian_red"
+            "valerian_red",
+            "belladonna"
     };
 
     @Inject(method = "createBlockStateIdMap", at = @At("RETURN"), require = 0)

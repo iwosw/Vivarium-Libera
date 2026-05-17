@@ -41,6 +41,9 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> VALERIAN_PINK_ITEM = registerBlockItem("valerian_pink", ModBlocks.VALERIAN_PINK);
     public static final DeferredItem<BlockItem> VALERIAN_RED_ITEM = registerBlockItem("valerian_red", ModBlocks.VALERIAN_RED);
     public static final DeferredItem<BlockItem> CROWS_EYE_ITEM = registerBlockItem("crows_eye", ModBlocks.CROWS_EYE);
+    public static final DeferredItem<BlockItem> THISTLE_ITEM = registerBlockItem("thistle", ModBlocks.THISTLE);
+    public static final DeferredItem<BlockItem> MINT_ITEM = registerBlockItem("mint", ModBlocks.MINT);
+    public static final DeferredItem<BlockItem> BELLADONNA_ITEM = registerBlockItem("belladonna", ModBlocks.BELLADONNA);
     public static final DeferredItem<BlockItem> PLUM_PLANKS_ITEM = registerBlockItem("plum_planks", ModBlocks.PLUM_PLANKS);
     public static final DeferredItem<BlockItem> PLUM_SLAB_ITEM = registerBlockItem("plum_slab", ModBlocks.PLUM_SLAB);
     public static final DeferredItem<BlockItem> PLUM_STAIRS_ITEM = registerBlockItem("plum_stairs", ModBlocks.PLUM_STAIRS);
@@ -58,6 +61,7 @@ public final class ModItems {
 
     public static final DeferredItem<Item> KNIFE = ITEMS.register("knife", () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> WORMWOOD_CUT = registerSimpleItem("wormwood_cut");
     public static final DeferredItem<Item> NETTLE_CUT = registerSimpleItem("nettle_cut");
     public static final DeferredItem<Item> HENBANE_CUT = registerSimpleItem("henbane_cut");
     public static final DeferredItem<Item> ST_JOHNS_WORT_CUT = registerSimpleItem("st_johns_wort_cut");
@@ -76,6 +80,12 @@ public final class ModItems {
     public static final DeferredItem<Item> VALERIAN_PINK_CUT = registerSimpleItem("valerian_pink_cut");
     public static final DeferredItem<Item> VALERIAN_RED_CUT = registerSimpleItem("valerian_red_cut");
     public static final DeferredItem<Item> CROWS_EYE_BERRIES = registerSimpleItem("crows_eye_berries");
+    public static final DeferredItem<Item> THISTLE_CUT = registerSimpleItem("thistle_cut");
+    public static final DeferredItem<Item> MINT_CUT = registerSimpleItem("mint_cut");
+    public static final DeferredItem<Item> BELLADONNA_BERRIES = registerSimpleItem("belladonna_berries");
+    public static final DeferredItem<Item> CATTAIL_FLUFF = registerSimpleItem("cattail_fluff");
+    public static final DeferredItem<Item> SUGARCANE_PEEL = registerSimpleItem("sugarcane_peel");
+    public static final DeferredItem<Item> SUGAR_CANE_PULP = registerSimpleItem("sugar_cane_pulp");
 
     public static final List<DeferredItem<BlockItem>> PLANT_ITEMS = List.of(
             WORMWOOD_ITEM,
@@ -105,7 +115,10 @@ public final class ModItems {
             VALERIAN_WHITE_ITEM,
             VALERIAN_PINK_ITEM,
             VALERIAN_RED_ITEM,
-            CROWS_EYE_ITEM);
+            CROWS_EYE_ITEM,
+            THISTLE_ITEM,
+            MINT_ITEM,
+            BELLADONNA_ITEM);
 
     public static final List<DeferredItem<BlockItem>> BLOCK_ITEMS = List.of(
             PLUM_PLANKS_ITEM,
@@ -124,6 +137,7 @@ public final class ModItems {
             PLUM_SAPLING_ITEM);
 
     public static final List<DeferredItem<Item>> CUT_PLANT_ITEMS = List.of(
+            WORMWOOD_CUT,
             NETTLE_CUT,
             HENBANE_CUT,
             ST_JOHNS_WORT_CUT,
@@ -141,7 +155,13 @@ public final class ModItems {
             VALERIAN_WHITE_CUT,
             VALERIAN_PINK_CUT,
             VALERIAN_RED_CUT,
-            CROWS_EYE_BERRIES);
+            CROWS_EYE_BERRIES,
+            THISTLE_CUT,
+            MINT_CUT,
+            BELLADONNA_BERRIES,
+            CATTAIL_FLUFF,
+            SUGARCANE_PEEL,
+            SUGAR_CANE_PULP);
 
     private ModItems() {
     }

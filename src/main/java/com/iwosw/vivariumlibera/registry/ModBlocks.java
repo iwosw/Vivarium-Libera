@@ -1,6 +1,8 @@
 package com.iwosw.vivariumlibera.registry;
 
 import com.iwosw.vivariumlibera.VivariumLibera;
+import com.iwosw.vivariumlibera.block.AquaticSimplePlantBlock;
+import com.iwosw.vivariumlibera.block.AquaticTallPlantBlock;
 import com.iwosw.vivariumlibera.block.PlumFenceBlock;
 import com.iwosw.vivariumlibera.block.PlumSaplingBlock;
 import com.iwosw.vivariumlibera.block.RegrowingPetalsBlock;
@@ -30,17 +32,17 @@ public final class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(VivariumLibera.MOD_ID);
 
     public static final DeferredBlock<StackablePlantBlock> WORMWOOD = registerStackablePlant("wormwood");
-    public static final DeferredBlock<StackablePlantBlock> NETTLE = registerStackablePlant("nettle");
+    public static final DeferredBlock<StackablePlantBlock> NETTLE = registerMoistStackablePlant("nettle");
     public static final DeferredBlock<StackablePlantBlock> HENBANE = registerStackablePlant("henbane");
     public static final DeferredBlock<StackablePlantBlock> ST_JOHNS_WORT = registerStackablePlant("st_johns_wort");
     public static final DeferredBlock<StackablePlantBlock> DATURA = registerStackablePlant("datura");
     public static final DeferredBlock<TallPlantBlock> FIREWEED = registerTallPlant("fireweed");
     public static final DeferredBlock<TallPlantBlock> CHICORY = registerTallPlant("chicory");
 
-    public static final DeferredBlock<SimplePlantBlock> CALAMUS = registerSimplePlant("calamus");
-    public static final DeferredBlock<TallPlantBlock> CATTAIL = registerTallPlant("cattail");
+    public static final DeferredBlock<AquaticSimplePlantBlock> CALAMUS = registerAquaticSimplePlant("calamus");
+    public static final DeferredBlock<AquaticTallPlantBlock> CATTAIL = registerAquaticTallPlant("cattail");
     public static final DeferredBlock<SimplePlantBlock> CALENDULA = registerSimplePlant("calendula");
-    public static final DeferredBlock<SimplePlantBlock> COMFREY = registerSimplePlant("comfrey");
+    public static final DeferredBlock<SimplePlantBlock> COMFREY = registerMoistSimplePlant("comfrey");
     public static final DeferredBlock<SimplePlantBlock> EYEBRIGHT = registerSimplePlant("eyebright");
     public static final DeferredBlock<SimplePlantBlock> SAGE = registerSimplePlant("sage");
     public static final DeferredBlock<RegrowingPetalsBlock> WOOD_SORREL_RED = registerMeadowFlower("wood_sorrel_red");
@@ -57,7 +59,10 @@ public final class ModBlocks {
     public static final DeferredBlock<TallPlantBlock> VALERIAN_WHITE = registerTallPlant("valerian_white");
     public static final DeferredBlock<TallPlantBlock> VALERIAN_PINK = registerTallPlant("valerian_pink");
     public static final DeferredBlock<TallPlantBlock> VALERIAN_RED = registerTallPlant("valerian_red");
-    public static final DeferredBlock<SimplePlantBlock> CROWS_EYE = registerSimplePlant("crows_eye");
+    public static final DeferredBlock<SimplePlantBlock> CROWS_EYE = registerMoistSimplePlant("crows_eye");
+    public static final DeferredBlock<SimplePlantBlock> THISTLE = registerSimplePlant("thistle");
+    public static final DeferredBlock<SimplePlantBlock> MINT = registerMoistSimplePlant("mint");
+    public static final DeferredBlock<TallPlantBlock> BELLADONNA = registerTallPlant("belladonna");
 
     public static final DeferredBlock<Block> PLUM_PLANKS = registerPlanks("plum_planks");
     public static final DeferredBlock<SlabBlock> PLUM_SLAB = registerSlab("plum_slab");
@@ -85,12 +90,28 @@ public final class ModBlocks {
         return BLOCKS.register(name, () -> new StackablePlantBlock(plantProperties()));
     }
 
+    private static DeferredBlock<StackablePlantBlock> registerMoistStackablePlant(String name) {
+        return BLOCKS.register(name, () -> new StackablePlantBlock(plantProperties(), true));
+    }
+
     private static DeferredBlock<SimplePlantBlock> registerSimplePlant(String name) {
         return BLOCKS.register(name, () -> new SimplePlantBlock(plantProperties()));
     }
 
+    private static DeferredBlock<SimplePlantBlock> registerMoistSimplePlant(String name) {
+        return BLOCKS.register(name, () -> new SimplePlantBlock(plantProperties(), true));
+    }
+
+    private static DeferredBlock<AquaticSimplePlantBlock> registerAquaticSimplePlant(String name) {
+        return BLOCKS.register(name, () -> new AquaticSimplePlantBlock(plantProperties()));
+    }
+
     private static DeferredBlock<TallPlantBlock> registerTallPlant(String name) {
         return BLOCKS.register(name, () -> new TallPlantBlock(plantProperties()));
+    }
+
+    private static DeferredBlock<AquaticTallPlantBlock> registerAquaticTallPlant(String name) {
+        return BLOCKS.register(name, () -> new AquaticTallPlantBlock(plantProperties()));
     }
 
     private static DeferredBlock<RegrowingPetalsBlock> registerMeadowFlower(String name) {

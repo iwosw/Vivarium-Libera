@@ -1,6 +1,8 @@
 {
   "variants": {
-    "blooming=false": { "model": "vivariumlibera:block/plant_stem" },
-    "blooming=true": { "model": "vivariumlibera:block/calamus" }
+    "blooming=false,waterlogged=false": { "model": "vivariumlibera:block/plant_stem" },
+    "blooming=false,waterlogged=true": { "model": "vivariumlibera:block/plant_stem" },
+    "blooming=true,waterlogged=false": { "model": "vivariumlibera:block/calamus" },
+    "blooming=true,waterlogged=true": { "model": "vivariumlibera:block/calamus" }
   }
 }

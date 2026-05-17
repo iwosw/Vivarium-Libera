@@ -33,8 +33,15 @@ public final class StackablePlantBlock extends BushBlock {
     private static final VoxelShape SINGLE_SHAPE = Block.box(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
     private static final VoxelShape DOUBLE_SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
 
+    private final boolean requiresNearbyWater;
+
     public StackablePlantBlock(BlockBehaviour.Properties properties) {
+        this(properties, false);
+    }
+
+    public StackablePlantBlock(BlockBehaviour.Properties properties, boolean requiresNearbyWater) {
         super(properties);
+        this.requiresNearbyWater = requiresNearbyWater;
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(AMOUNT, 1)
                 .setValue(ALT, false)
@@ -79,6 +86,12 @@ public final class StackablePlantBlock extends BushBlock {
         if (!state.getValue(BLOOMING)) {
             level.setBlock(pos, state.setValue(BLOOMING, true), 3);
         }
+    }
+
+    @Override
+    protected boolean canSurvive(BlockState state, net.minecraft.world.level.LevelReader level, BlockPos pos) {
+        return super.canSurvive(state, level, pos)
+                && (!requiresNearbyWater || PlantPlacementRules.hasNearbyWater(level, pos));
     }
 
     @Override
