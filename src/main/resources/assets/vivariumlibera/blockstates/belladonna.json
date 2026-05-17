@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "blooming=false,half=lower": { "model": "vivariumlibera:block/plant_stem" },
+    "blooming=false,half=upper": { "model": "vivariumlibera:block/plant_stem" },
+    "blooming=true,half=lower": { "model": "vivariumlibera:block/belladonna_bottom" },
+    "blooming=true,half=upper": { "model": "vivariumlibera:block/belladonna_top" }
+  }
+}

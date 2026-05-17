@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "blooming=false": { "model": "vivariumlibera:block/plant_stem" },
+    "blooming=true": { "model": "vivariumlibera:block/mint" }
+  }
+}

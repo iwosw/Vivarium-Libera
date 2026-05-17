@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -23,12 +24,14 @@ public final class PlantCuttingEvents {
     private static final int REGROW_TICKS = 1200;
 
     private static final List<CutDrop> CUT_DROPS = List.of(
+            new CutDrop(ModBlocks.WORMWOOD, ModItems.WORMWOOD_CUT),
             new CutDrop(ModBlocks.NETTLE, ModItems.NETTLE_CUT),
             new CutDrop(ModBlocks.HENBANE, ModItems.HENBANE_CUT),
             new CutDrop(ModBlocks.ST_JOHNS_WORT, ModItems.ST_JOHNS_WORT_CUT),
             new CutDrop(ModBlocks.DATURA, ModItems.DATURA_CUT),
             new CutDrop(ModBlocks.FIREWEED, ModItems.FIREWEED_CUT),
             new CutDrop(ModBlocks.CHICORY, ModItems.CHICORY_CUT),
+            new CutDrop(ModBlocks.CATTAIL, ModItems.CATTAIL_FLUFF),
             new CutDrop(ModBlocks.COMFREY, ModItems.COMFREY_CUT),
             new CutDrop(ModBlocks.EYEBRIGHT, ModItems.EYEBRIGHT_CUT),
             new CutDrop(ModBlocks.SAGE, ModItems.SAGE_CUT),
@@ -46,7 +49,10 @@ public final class PlantCuttingEvents {
             new CutDrop(ModBlocks.VALERIAN_WHITE, ModItems.VALERIAN_WHITE_CUT),
             new CutDrop(ModBlocks.VALERIAN_PINK, ModItems.VALERIAN_PINK_CUT),
             new CutDrop(ModBlocks.VALERIAN_RED, ModItems.VALERIAN_RED_CUT),
-            new CutDrop(ModBlocks.CROWS_EYE, ModItems.CROWS_EYE_BERRIES));
+            new CutDrop(ModBlocks.CROWS_EYE, ModItems.CROWS_EYE_BERRIES),
+            new CutDrop(ModBlocks.THISTLE, ModItems.THISTLE_CUT),
+            new CutDrop(ModBlocks.MINT, ModItems.MINT_CUT),
+            new CutDrop(ModBlocks.BELLADONNA, ModItems.BELLADONNA_BERRIES));
 
     private PlantCuttingEvents() {
     }
@@ -61,6 +67,10 @@ public final class PlantCuttingEvents {
         Level level = event.getLevel();
         BlockPos pos = event.getPos();
         BlockState state = level.getBlockState(pos);
+        if (tryCutSugarCane(event, level, pos, state)) {
+            return;
+        }
+
         BlockPos plantPos = getPlantBasePos(pos, state);
         BlockState plantState = level.getBlockState(plantPos);
         CutDrop cutDrop = findCutDrop(plantState);
@@ -81,6 +91,39 @@ public final class PlantCuttingEvents {
         int count = getCutDropCount(plantState);
         cutPlant(level, plantPos, plantState);
         Block.popResource(level, plantPos, new ItemStack(cutDrop.item().get(), count));
+    }
+
+    private static boolean tryCutSugarCane(
+            PlayerInteractEvent.RightClickBlock event,
+            Level level,
+            BlockPos pos,
+            BlockState state) {
+        if (!state.is(Blocks.SUGAR_CANE)) {
+            return false;
+        }
+
+        if (level.isClientSide) {
+            return true;
+        }
+
+        event.setCanceled(true);
+
+        int count = removeSugarCane(level, pos);
+        Block.popResource(level, pos, new ItemStack(ModItems.SUGARCANE_PEEL.get(), count));
+        Block.popResource(level, pos, new ItemStack(ModItems.SUGAR_CANE_PULP.get(), count));
+        return true;
+    }
+
+    private static int removeSugarCane(Level level, BlockPos pos) {
+        int count = 0;
+        BlockPos currentPos = pos;
+        while (level.getBlockState(currentPos).is(Blocks.SUGAR_CANE)) {
+            level.removeBlock(currentPos, false);
+            count++;
+            currentPos = currentPos.above();
+        }
+
+        return count;
     }
 
     private static CutDrop findCutDrop(BlockState state) {
