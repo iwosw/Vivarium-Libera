@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=x": { "model": "vivariumlibera:block/plum_log", "x": 90, "y": 90 },
+    "axis=y": { "model": "vivariumlibera:block/plum_log" },
+    "axis=z": { "model": "vivariumlibera:block/plum_log", "x": 90 }
+  }
+}

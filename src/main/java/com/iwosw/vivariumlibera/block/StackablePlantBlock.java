@@ -3,6 +3,8 @@ package com.iwosw.vivariumlibera.block;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -24,6 +26,7 @@ public final class StackablePlantBlock extends BushBlock {
     public static final MapCodec<StackablePlantBlock> CODEC = simpleCodec(StackablePlantBlock::new);
     public static final IntegerProperty AMOUNT = IntegerProperty.create("amount", 1, 2);
     public static final BooleanProperty ALT = BooleanProperty.create("alt");
+    public static final BooleanProperty BLOOMING = BooleanProperty.create("blooming");
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     private static final int MAX_AMOUNT = 2;
@@ -35,6 +38,7 @@ public final class StackablePlantBlock extends BushBlock {
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(AMOUNT, 1)
                 .setValue(ALT, false)
+                .setValue(BLOOMING, true)
                 .setValue(FACING, Direction.NORTH));
     }
 
@@ -52,6 +56,7 @@ public final class StackablePlantBlock extends BushBlock {
 
         return this.defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                .setValue(BLOOMING, true)
                 .setValue(ALT, useAltVariant(context.getClickedPos()));
     }
 
@@ -66,7 +71,14 @@ public final class StackablePlantBlock extends BushBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AMOUNT, ALT, FACING);
+        builder.add(AMOUNT, ALT, BLOOMING, FACING);
+    }
+
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (!state.getValue(BLOOMING)) {
+            level.setBlock(pos, state.setValue(BLOOMING, true), 3);
+        }
     }
 
     @Override

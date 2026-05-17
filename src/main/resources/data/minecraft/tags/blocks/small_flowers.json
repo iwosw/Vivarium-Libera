@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "vivariumlibera:wormwood",
+    "vivariumlibera:nettle",
+    "vivariumlibera:henbane",
+    "vivariumlibera:st_johns_wort",
+    "vivariumlibera:datura",
+    "vivariumlibera:calamus",
+    "vivariumlibera:calendula",
+    "vivariumlibera:comfrey",
+    "vivariumlibera:eyebright",
+    "vivariumlibera:sage",
+    "vivariumlibera:wood_sorrel_red",
+    "vivariumlibera:wood_sorrel_yellow",
+    "vivariumlibera:yarrow_white",
+    "vivariumlibera:yarrow_red",
+    "vivariumlibera:yarrow_pink",
+    "vivariumlibera:yarrow_yellow",
+    "vivariumlibera:lycoris"
+  ]
+}

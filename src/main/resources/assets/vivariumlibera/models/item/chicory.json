@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "vivariumlibera:item/plants/chicory_2"
-  }
+  "parent": "vivariumlibera:block/chicory_double"
 }

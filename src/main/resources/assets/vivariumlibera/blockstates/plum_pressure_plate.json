@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "vivariumlibera:block/plum_pressure_plate" },
+    "powered=true": { "model": "vivariumlibera:block/plum_pressure_plate_down" }
+  }
+}

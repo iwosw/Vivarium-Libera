@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "vivariumlibera:item/plants/fireweed_2"
-  }
+  "parent": "vivariumlibera:block/fireweed_double"
 }

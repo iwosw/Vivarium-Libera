@@ -1,20 +1,14 @@
 {
-  "variants": {
-    "alt=false,amount=1,facing=north": { "model": "vivariumlibera:block/henbane" },
-    "alt=false,amount=1,facing=east": { "model": "vivariumlibera:block/henbane" },
-    "alt=false,amount=1,facing=south": { "model": "vivariumlibera:block/henbane" },
-    "alt=false,amount=1,facing=west": { "model": "vivariumlibera:block/henbane" },
-    "alt=true,amount=1,facing=north": { "model": "vivariumlibera:block/henbane" },
-    "alt=true,amount=1,facing=east": { "model": "vivariumlibera:block/henbane" },
-    "alt=true,amount=1,facing=south": { "model": "vivariumlibera:block/henbane" },
-    "alt=true,amount=1,facing=west": { "model": "vivariumlibera:block/henbane" },
-    "alt=false,amount=2,facing=north": { "model": "vivariumlibera:block/henbane_double", "y": 0 },
-    "alt=false,amount=2,facing=east": { "model": "vivariumlibera:block/henbane_double", "y": 90 },
-    "alt=false,amount=2,facing=south": { "model": "vivariumlibera:block/henbane_double", "y": 180 },
-    "alt=false,amount=2,facing=west": { "model": "vivariumlibera:block/henbane_double", "y": 270 },
-    "alt=true,amount=2,facing=north": { "model": "vivariumlibera:block/henbane_double", "y": 90 },
-    "alt=true,amount=2,facing=east": { "model": "vivariumlibera:block/henbane_double", "y": 180 },
-    "alt=true,amount=2,facing=south": { "model": "vivariumlibera:block/henbane_double", "y": 270 },
-    "alt=true,amount=2,facing=west": { "model": "vivariumlibera:block/henbane_double", "y": 0 }
-  }
+  "multipart": [
+    { "apply": { "model": "vivariumlibera:block/plant_stem" }, "when": { "blooming": "false" } },
+    { "apply": { "model": "vivariumlibera:block/henbane" }, "when": { "amount": "1", "blooming": "true" } },
+    { "apply": { "model": "vivariumlibera:block/henbane_double", "y": 0 }, "when": { "alt": "false", "amount": "2", "blooming": "true", "facing": "north" } },
+    { "apply": { "model": "vivariumlibera:block/henbane_double", "y": 90 }, "when": { "alt": "false", "amount": "2", "blooming": "true", "facing": "east" } },
+    { "apply": { "model": "vivariumlibera:block/henbane_double", "y": 180 }, "when": { "alt": "false", "amount": "2", "blooming": "true", "facing": "south" } },
+    { "apply": { "model": "vivariumlibera:block/henbane_double", "y": 270 }, "when": { "alt": "false", "amount": "2", "blooming": "true", "facing": "west" } },
+    { "apply": { "model": "vivariumlibera:block/henbane_double", "y": 90 }, "when": { "alt": "true", "amount": "2", "blooming": "true", "facing": "north" } },
+    { "apply": { "model": "vivariumlibera:block/henbane_double", "y": 180 }, "when": { "alt": "true", "amount": "2", "blooming": "true", "facing": "east" } },
+    { "apply": { "model": "vivariumlibera:block/henbane_double", "y": 270 }, "when": { "alt": "true", "amount": "2", "blooming": "true", "facing": "south" } },
+    { "apply": { "model": "vivariumlibera:block/henbane_double", "y": 0 }, "when": { "alt": "true", "amount": "2", "blooming": "true", "facing": "west" } }
+  ]
 }
