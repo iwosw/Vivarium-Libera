@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_fence_gate_wall",
+  "textures": {
+    "texture": "vivariumlibera:block/wood/plum/plum_planks_side"
+  }
+}

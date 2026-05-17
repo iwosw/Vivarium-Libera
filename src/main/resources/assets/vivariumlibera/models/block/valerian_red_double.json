@@ -1,0 +1,7 @@
+{
+  "parent": "vivariumlibera:block/bell_flower_double",
+  "textures": {
+    "bottom": "vivariumlibera:item/plants/valerian_red_bot",
+    "top": "vivariumlibera:item/plants/valerian__red_top"
+  }
+}

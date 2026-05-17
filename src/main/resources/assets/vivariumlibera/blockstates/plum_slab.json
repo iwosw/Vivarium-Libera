@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "vivariumlibera:block/plum_slab" },
+    "type=double": { "model": "vivariumlibera:block/plum_planks" },
+    "type=top": { "model": "vivariumlibera:block/plum_slab_top" }
+  }
+}

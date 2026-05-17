@@ -1,0 +1,7 @@
+{
+  "parent": "vivariumlibera:block/bell_flower_double",
+  "textures": {
+    "bottom": "vivariumlibera:item/plants/bell_flower_bot",
+    "top": "vivariumlibera:item/plants/bell_flower_violet"
+  }
+}

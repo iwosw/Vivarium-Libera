@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/pressure_plate_up",
+  "textures": {
+    "texture": "vivariumlibera:block/wood/plum/plum_planks_top"
+  }
+}

@@ -23,14 +23,59 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> CALAMUS_ITEM = registerBlockItem("calamus", ModBlocks.CALAMUS);
     public static final DeferredItem<BlockItem> CATTAIL_ITEM = registerBlockItem("cattail", ModBlocks.CATTAIL);
     public static final DeferredItem<BlockItem> CALENDULA_ITEM = registerBlockItem("calendula", ModBlocks.CALENDULA);
+    public static final DeferredItem<BlockItem> COMFREY_ITEM = registerBlockItem("comfrey", ModBlocks.COMFREY);
+    public static final DeferredItem<BlockItem> EYEBRIGHT_ITEM = registerBlockItem("eyebright", ModBlocks.EYEBRIGHT);
+    public static final DeferredItem<BlockItem> SAGE_ITEM = registerBlockItem("sage", ModBlocks.SAGE);
     public static final DeferredItem<BlockItem> WOOD_SORREL_RED_ITEM = registerBlockItem("wood_sorrel_red", ModBlocks.WOOD_SORREL_RED);
     public static final DeferredItem<BlockItem> WOOD_SORREL_YELLOW_ITEM = registerBlockItem("wood_sorrel_yellow", ModBlocks.WOOD_SORREL_YELLOW);
     public static final DeferredItem<BlockItem> YARROW_WHITE_ITEM = registerBlockItem("yarrow_white", ModBlocks.YARROW_WHITE);
     public static final DeferredItem<BlockItem> YARROW_RED_ITEM = registerBlockItem("yarrow_red", ModBlocks.YARROW_RED);
     public static final DeferredItem<BlockItem> YARROW_PINK_ITEM = registerBlockItem("yarrow_pink", ModBlocks.YARROW_PINK);
     public static final DeferredItem<BlockItem> YARROW_YELLOW_ITEM = registerBlockItem("yarrow_yellow", ModBlocks.YARROW_YELLOW);
+    public static final DeferredItem<BlockItem> LYCORIS_ITEM = registerBlockItem("lycoris", ModBlocks.LYCORIS);
+    public static final DeferredItem<BlockItem> BELL_FLOWER_BLUE_ITEM = registerBlockItem("bell_flower_blue", ModBlocks.BELL_FLOWER_BLUE);
+    public static final DeferredItem<BlockItem> BELL_FLOWER_PINK_ITEM = registerBlockItem("bell_flower_pink", ModBlocks.BELL_FLOWER_PINK);
+    public static final DeferredItem<BlockItem> BELL_FLOWER_VIOLET_ITEM = registerBlockItem("bell_flower_violet", ModBlocks.BELL_FLOWER_VIOLET);
+    public static final DeferredItem<BlockItem> BELL_FLOWER_WHITE_ITEM = registerBlockItem("bell_flower_white", ModBlocks.BELL_FLOWER_WHITE);
+    public static final DeferredItem<BlockItem> VALERIAN_WHITE_ITEM = registerBlockItem("valerian_white", ModBlocks.VALERIAN_WHITE);
+    public static final DeferredItem<BlockItem> VALERIAN_PINK_ITEM = registerBlockItem("valerian_pink", ModBlocks.VALERIAN_PINK);
+    public static final DeferredItem<BlockItem> VALERIAN_RED_ITEM = registerBlockItem("valerian_red", ModBlocks.VALERIAN_RED);
+    public static final DeferredItem<BlockItem> CROWS_EYE_ITEM = registerBlockItem("crows_eye", ModBlocks.CROWS_EYE);
+    public static final DeferredItem<BlockItem> PLUM_PLANKS_ITEM = registerBlockItem("plum_planks", ModBlocks.PLUM_PLANKS);
+    public static final DeferredItem<BlockItem> PLUM_SLAB_ITEM = registerBlockItem("plum_slab", ModBlocks.PLUM_SLAB);
+    public static final DeferredItem<BlockItem> PLUM_STAIRS_ITEM = registerBlockItem("plum_stairs", ModBlocks.PLUM_STAIRS);
+    public static final DeferredItem<BlockItem> PLUM_BUTTON_ITEM = registerBlockItem("plum_button", ModBlocks.PLUM_BUTTON);
+    public static final DeferredItem<BlockItem> PLUM_PRESSURE_PLATE_ITEM = registerBlockItem("plum_pressure_plate", ModBlocks.PLUM_PRESSURE_PLATE);
+    public static final DeferredItem<BlockItem> PLUM_FENCE_ITEM = registerBlockItem("plum_fence", ModBlocks.PLUM_FENCE);
+    public static final DeferredItem<BlockItem> PLUM_FENCE_GATE_ITEM = registerBlockItem("plum_fence_gate", ModBlocks.PLUM_FENCE_GATE);
+    public static final DeferredItem<BlockItem> PLUM_TRAPDOOR_ITEM = registerBlockItem("plum_trapdoor", ModBlocks.PLUM_TRAPDOOR);
+    public static final DeferredItem<BlockItem> PLUM_LOG_ITEM = registerBlockItem("plum_log", ModBlocks.PLUM_LOG);
+    public static final DeferredItem<BlockItem> STRIPPED_PLUM_LOG_ITEM = registerBlockItem("stripped_plum_log", ModBlocks.STRIPPED_PLUM_LOG);
+    public static final DeferredItem<BlockItem> PLUM_LEAVES_ITEM = registerBlockItem("plum_leaves", ModBlocks.PLUM_LEAVES);
+    public static final DeferredItem<BlockItem> PLUM_LEAVES_1_ITEM = registerBlockItem("plum_leaves_1", ModBlocks.PLUM_LEAVES_1);
+    public static final DeferredItem<BlockItem> PLUM_LEAVES_2_ITEM = registerBlockItem("plum_leaves_2", ModBlocks.PLUM_LEAVES_2);
+    public static final DeferredItem<BlockItem> PLUM_SAPLING_ITEM = registerBlockItem("plum_sapling", ModBlocks.PLUM_SAPLING);
 
     public static final DeferredItem<Item> KNIFE = ITEMS.register("knife", () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> NETTLE_CUT = registerSimpleItem("nettle_cut");
+    public static final DeferredItem<Item> HENBANE_CUT = registerSimpleItem("henbane_cut");
+    public static final DeferredItem<Item> ST_JOHNS_WORT_CUT = registerSimpleItem("st_johns_wort_cut");
+    public static final DeferredItem<Item> DATURA_CUT = registerSimpleItem("datura_cut");
+    public static final DeferredItem<Item> FIREWEED_CUT = registerSimpleItem("fireweed_cut");
+    public static final DeferredItem<Item> CHICORY_CUT = registerSimpleItem("chicory_cut");
+    public static final DeferredItem<Item> COMFREY_CUT = registerSimpleItem("comfrey_cut");
+    public static final DeferredItem<Item> EYEBRIGHT_CUT = registerSimpleItem("eyebright_cut");
+    public static final DeferredItem<Item> SAGE_CUT = registerSimpleItem("sage_cut");
+    public static final DeferredItem<Item> CALENDULA_CUT = registerSimpleItem("calendula_cut");
+    public static final DeferredItem<Item> WOOD_SORREL_RED_CUT = registerSimpleItem("wood_sorrel_red_cut");
+    public static final DeferredItem<Item> WOOD_SORREL_YELLOW_CUT = registerSimpleItem("wood_sorrel_yellow_cut");
+    public static final DeferredItem<Item> YARROW_CUT = registerSimpleItem("yarrow_cut");
+    public static final DeferredItem<Item> BELL_FLOWER_CUT = registerSimpleItem("bell_flower_cut");
+    public static final DeferredItem<Item> VALERIAN_WHITE_CUT = registerSimpleItem("valerian_white_cut");
+    public static final DeferredItem<Item> VALERIAN_PINK_CUT = registerSimpleItem("valerian_pink_cut");
+    public static final DeferredItem<Item> VALERIAN_RED_CUT = registerSimpleItem("valerian_red_cut");
+    public static final DeferredItem<Item> CROWS_EYE_BERRIES = registerSimpleItem("crows_eye_berries");
 
     public static final List<DeferredItem<BlockItem>> PLANT_ITEMS = List.of(
             WORMWOOD_ITEM,
@@ -43,12 +88,60 @@ public final class ModItems {
             CALAMUS_ITEM,
             CATTAIL_ITEM,
             CALENDULA_ITEM,
+            COMFREY_ITEM,
+            EYEBRIGHT_ITEM,
+            SAGE_ITEM,
             WOOD_SORREL_RED_ITEM,
             WOOD_SORREL_YELLOW_ITEM,
             YARROW_WHITE_ITEM,
             YARROW_RED_ITEM,
             YARROW_PINK_ITEM,
-            YARROW_YELLOW_ITEM);
+            YARROW_YELLOW_ITEM,
+            LYCORIS_ITEM,
+            BELL_FLOWER_BLUE_ITEM,
+            BELL_FLOWER_PINK_ITEM,
+            BELL_FLOWER_VIOLET_ITEM,
+            BELL_FLOWER_WHITE_ITEM,
+            VALERIAN_WHITE_ITEM,
+            VALERIAN_PINK_ITEM,
+            VALERIAN_RED_ITEM,
+            CROWS_EYE_ITEM);
+
+    public static final List<DeferredItem<BlockItem>> BLOCK_ITEMS = List.of(
+            PLUM_PLANKS_ITEM,
+            PLUM_SLAB_ITEM,
+            PLUM_STAIRS_ITEM,
+            PLUM_BUTTON_ITEM,
+            PLUM_PRESSURE_PLATE_ITEM,
+            PLUM_FENCE_ITEM,
+            PLUM_FENCE_GATE_ITEM,
+            PLUM_TRAPDOOR_ITEM,
+            PLUM_LOG_ITEM,
+            STRIPPED_PLUM_LOG_ITEM,
+            PLUM_LEAVES_ITEM,
+            PLUM_LEAVES_1_ITEM,
+            PLUM_LEAVES_2_ITEM,
+            PLUM_SAPLING_ITEM);
+
+    public static final List<DeferredItem<Item>> CUT_PLANT_ITEMS = List.of(
+            NETTLE_CUT,
+            HENBANE_CUT,
+            ST_JOHNS_WORT_CUT,
+            DATURA_CUT,
+            FIREWEED_CUT,
+            CHICORY_CUT,
+            COMFREY_CUT,
+            EYEBRIGHT_CUT,
+            SAGE_CUT,
+            CALENDULA_CUT,
+            WOOD_SORREL_RED_CUT,
+            WOOD_SORREL_YELLOW_CUT,
+            YARROW_CUT,
+            BELL_FLOWER_CUT,
+            VALERIAN_WHITE_CUT,
+            VALERIAN_PINK_CUT,
+            VALERIAN_RED_CUT,
+            CROWS_EYE_BERRIES);
 
     private ModItems() {
     }
@@ -59,5 +152,9 @@ public final class ModItems {
 
     private static DeferredItem<BlockItem> registerBlockItem(String name, DeferredBlock<? extends Block> block) {
         return ITEMS.registerSimpleBlockItem(name, block);
+    }
+
+    private static DeferredItem<Item> registerSimpleItem(String name) {
+        return ITEMS.register(name, () -> new Item(new Item.Properties()));
     }
 }

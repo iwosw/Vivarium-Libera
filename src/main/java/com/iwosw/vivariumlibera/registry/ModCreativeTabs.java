@@ -19,7 +19,11 @@ public final class ModCreativeTabs {
                     .title(Component.translatable("itemGroup.vivariumlibera"))
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
                     .icon(() -> ModItems.WORMWOOD_ITEM.get().getDefaultInstance())
-                    .displayItems((parameters, output) -> ModItems.PLANT_ITEMS.forEach(item -> output.accept(item.get())))
+                    .displayItems((parameters, output) -> {
+                        ModItems.PLANT_ITEMS.forEach(item -> output.accept(item.get()));
+                        ModItems.CUT_PLANT_ITEMS.forEach(item -> output.accept(item.get()));
+                        ModItems.BLOCK_ITEMS.forEach(item -> output.accept(item.get()));
+                    })
                     .build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TOOLS_TAB = CREATIVE_MODE_TABS.register("tools",

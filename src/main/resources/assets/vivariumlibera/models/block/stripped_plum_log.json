@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "vivariumlibera:block/wood/plum/plum_stripped_log_top",
+    "side": "vivariumlibera:block/wood/plum/plum_stripped_log_side"
+  }
+}
