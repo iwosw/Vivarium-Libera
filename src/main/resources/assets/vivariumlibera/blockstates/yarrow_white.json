@@ -1,6 +1,117 @@
 {
-  "variants": {
-    "blooming=false": { "model": "vivariumlibera:block/plant_stem" },
-    "blooming=true": { "model": "vivariumlibera:block/yarrow_white" }
-  }
+  "multipart": [
+    {
+      "apply": {
+        "model": "vivariumlibera:block/plant_stem"
+      },
+      "when": {
+        "blooming": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "vivariumlibera:block/yarrow_white"
+      },
+      "when": {
+        "amount": "1",
+        "blooming": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "vivariumlibera:block/yarrow_white_double",
+        "y": 0
+      },
+      "when": {
+        "alt": "false",
+        "amount": "2",
+        "blooming": "true",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "vivariumlibera:block/yarrow_white_double",
+        "y": 90
+      },
+      "when": {
+        "alt": "false",
+        "amount": "2",
+        "blooming": "true",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "vivariumlibera:block/yarrow_white_double",
+        "y": 180
+      },
+      "when": {
+        "alt": "false",
+        "amount": "2",
+        "blooming": "true",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "vivariumlibera:block/yarrow_white_double",
+        "y": 270
+      },
+      "when": {
+        "alt": "false",
+        "amount": "2",
+        "blooming": "true",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "vivariumlibera:block/yarrow_white_double",
+        "y": 90
+      },
+      "when": {
+        "alt": "true",
+        "amount": "2",
+        "blooming": "true",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "vivariumlibera:block/yarrow_white_double",
+        "y": 180
+      },
+      "when": {
+        "alt": "true",
+        "amount": "2",
+        "blooming": "true",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "vivariumlibera:block/yarrow_white_double",
+        "y": 270
+      },
+      "when": {
+        "alt": "true",
+        "amount": "2",
+        "blooming": "true",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "vivariumlibera:block/yarrow_white_double",
+        "y": 0
+      },
+      "when": {
+        "alt": "true",
+        "amount": "2",
+        "blooming": "true",
+        "facing": "west"
+      }
+    }
+  ]
 }

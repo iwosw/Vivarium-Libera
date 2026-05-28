@@ -3,8 +3,6 @@ package com.iwosw.vivariumlibera.block;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -19,27 +17,36 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
-public final class AquaticSimplePlantBlock extends BushBlock implements SimpleWaterloggedBlock {
+public final class AquaticSimplePlantBlock extends StackablePlantBlock implements SimpleWaterloggedBlock {
     public static final MapCodec<AquaticSimplePlantBlock> CODEC = simpleCodec(AquaticSimplePlantBlock::new);
-    public static final BooleanProperty BLOOMING = BooleanProperty.create("blooming");
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public AquaticSimplePlantBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState()
-                .setValue(BLOOMING, true)
                 .setValue(WATERLOGGED, false));
     }
 
     @Override
-    public MapCodec<AquaticSimplePlantBlock> codec() {
+    public MapCodec<? extends BushBlock> codec() {
         return CODEC;
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos());
+        boolean isWater = context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER);
+        if (clickedState.is(this)) {
+            return clickedState
+                    .setValue(AMOUNT, Math.min(2, clickedState.getValue(AMOUNT) + 1))
+                    .setValue(WATERLOGGED, isWater);
+        }
+
         return this.defaultBlockState()
-                .setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
+                .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                .setValue(BLOOMING, true)
+                .setValue(ALT, useAltVariant(context.getClickedPos()))
+                .setValue(WATERLOGGED, isWater);
     }
 
     @Override
@@ -68,14 +75,8 @@ public final class AquaticSimplePlantBlock extends BushBlock implements SimpleWa
     }
 
     @Override
-    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (!state.getValue(BLOOMING)) {
-            level.setBlock(pos, state.setValue(BLOOMING, true), 3);
-        }
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(BLOOMING, WATERLOGGED);
+        super.createBlockStateDefinition(builder);
+        builder.add(WATERLOGGED);
     }
 }

@@ -31,7 +31,10 @@ public final class ModCreativeTabs {
                     .title(Component.translatable("itemGroup.vivariumlibera.tools"))
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
                     .icon(() -> ModItems.KNIFE.get().getDefaultInstance())
-                    .displayItems((parameters, output) -> output.accept(ModItems.KNIFE.get()))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.KNIFE.get());
+                        output.accept(ModItems.HERBALIST_BOOK.get());
+                    })
                     .build());
 
     private ModCreativeTabs() {

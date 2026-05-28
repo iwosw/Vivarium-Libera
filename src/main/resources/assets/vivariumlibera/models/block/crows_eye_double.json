@@ -1,0 +1,6 @@
+{
+  "parent": "vivariumlibera:block/double_plant_parent",
+  "textures": {
+    "plant": "vivariumlibera:item/plants/crows_eye"
+  }
+}
