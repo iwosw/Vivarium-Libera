@@ -22,7 +22,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public final class StackablePlantBlock extends BushBlock {
+public class StackablePlantBlock extends BushBlock {
     public static final MapCodec<StackablePlantBlock> CODEC = simpleCodec(StackablePlantBlock::new);
     public static final IntegerProperty AMOUNT = IntegerProperty.create("amount", 1, 2);
     public static final BooleanProperty ALT = BooleanProperty.create("alt");
@@ -50,7 +50,7 @@ public final class StackablePlantBlock extends BushBlock {
     }
 
     @Override
-    public MapCodec<StackablePlantBlock> codec() {
+    public MapCodec<? extends BushBlock> codec() {
         return CODEC;
     }
 
@@ -111,7 +111,7 @@ public final class StackablePlantBlock extends BushBlock {
         return shape.move(offset.x, offset.y, offset.z);
     }
 
-    private static boolean useAltVariant(BlockPos pos) {
+    public static boolean useAltVariant(BlockPos pos) {
         long seed = pos.asLong();
         return ((seed ^ (seed >>> 17)) & 1L) != 0L;
     }

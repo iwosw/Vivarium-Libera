@@ -1,7 +1,10 @@
 package com.iwosw.vivariumlibera.registry;
 
 import com.iwosw.vivariumlibera.VivariumLibera;
+import com.iwosw.vivariumlibera.item.HerbalistBookItem;
 import java.util.List;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -12,6 +15,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(VivariumLibera.MOD_ID);
+    private static final FoodProperties RIPE_PLUM_FOOD = new FoodProperties.Builder()
+            .nutrition(4)
+            .saturationModifier(0.3F)
+            .build();
 
     public static final DeferredItem<BlockItem> WORMWOOD_ITEM = registerBlockItem("wormwood", ModBlocks.WORMWOOD);
     public static final DeferredItem<BlockItem> NETTLE_ITEM = registerBlockItem("nettle", ModBlocks.NETTLE);
@@ -58,8 +65,13 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> PLUM_LEAVES_1_ITEM = registerBlockItem("plum_leaves_1", ModBlocks.PLUM_LEAVES_1);
     public static final DeferredItem<BlockItem> PLUM_LEAVES_2_ITEM = registerBlockItem("plum_leaves_2", ModBlocks.PLUM_LEAVES_2);
     public static final DeferredItem<BlockItem> PLUM_SAPLING_ITEM = registerBlockItem("plum_sapling", ModBlocks.PLUM_SAPLING);
+    public static final DeferredItem<BlockItem> MORTAR_ITEM = registerBlockItem("mortar", ModBlocks.MORTAR);
 
     public static final DeferredItem<Item> KNIFE = ITEMS.register("knife", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<HerbalistBookItem> HERBALIST_BOOK = ITEMS.register("herbalist_book", () -> new HerbalistBookItem(
+            new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.WRITTEN_BOOK_CONTENT, HerbalistBookItem.createContent())));
 
     public static final DeferredItem<Item> WORMWOOD_CUT = registerSimpleItem("wormwood_cut");
     public static final DeferredItem<Item> NETTLE_CUT = registerSimpleItem("nettle_cut");
@@ -86,6 +98,10 @@ public final class ModItems {
     public static final DeferredItem<Item> CATTAIL_FLUFF = registerSimpleItem("cattail_fluff");
     public static final DeferredItem<Item> SUGARCANE_PEEL = registerSimpleItem("sugarcane_peel");
     public static final DeferredItem<Item> SUGAR_CANE_PULP = registerSimpleItem("sugar_cane_pulp");
+    public static final DeferredItem<Item> PLUM_UNRIPE = registerSimpleItem("plum_unripe");
+    public static final DeferredItem<Item> PLUM_RIPE = ITEMS.register("plum_ripe", () -> new Item(new Item.Properties().food(RIPE_PLUM_FOOD)));
+    public static final DeferredItem<Item> POISON_BOTTLE = registerSimpleItem("poison_bottle");
+    public static final DeferredItem<Item> HERBAL_POWDER = registerSimpleItem("herbal_powder");
 
     public static final List<DeferredItem<BlockItem>> PLANT_ITEMS = List.of(
             WORMWOOD_ITEM,
@@ -134,7 +150,8 @@ public final class ModItems {
             PLUM_LEAVES_ITEM,
             PLUM_LEAVES_1_ITEM,
             PLUM_LEAVES_2_ITEM,
-            PLUM_SAPLING_ITEM);
+            PLUM_SAPLING_ITEM,
+            MORTAR_ITEM);
 
     public static final List<DeferredItem<Item>> CUT_PLANT_ITEMS = List.of(
             WORMWOOD_CUT,
@@ -161,7 +178,11 @@ public final class ModItems {
             BELLADONNA_BERRIES,
             CATTAIL_FLUFF,
             SUGARCANE_PEEL,
-            SUGAR_CANE_PULP);
+            SUGAR_CANE_PULP,
+            PLUM_UNRIPE,
+            PLUM_RIPE,
+            POISON_BOTTLE,
+            HERBAL_POWDER);
 
     private ModItems() {
     }

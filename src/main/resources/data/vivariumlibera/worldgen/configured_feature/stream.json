@@ -1,0 +1,13 @@
+{
+  "type": "vivariumlibera:stream",
+  "config": {
+    "cell_size_blocks": 64,
+    "cell_chance": 0.18,
+    "min_y": 55,
+    "max_y": 120,
+    "max_local_slope": 3,
+    "radius": 2,
+    "depth": 1,
+    "debug_markers": false
+  }
+}

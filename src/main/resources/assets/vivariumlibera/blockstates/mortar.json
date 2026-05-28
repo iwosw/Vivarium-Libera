@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=east": { "model": "vivariumlibera:block/mortar", "y": 90 },
+    "facing=north": { "model": "vivariumlibera:block/mortar" },
+    "facing=south": { "model": "vivariumlibera:block/mortar", "y": 180 },
+    "facing=west": { "model": "vivariumlibera:block/mortar", "y": 270 }
+  }
+}

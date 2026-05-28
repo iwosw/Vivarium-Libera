@@ -20,6 +20,9 @@ final class PlantPlacementRules {
     }
 
     static boolean hasWaterAtOrNearby(LevelReader level, BlockPos pos) {
-        return level.getFluidState(pos).is(FluidTags.WATER) || hasNearbyWater(level, pos);
+        return level.getFluidState(pos).is(FluidTags.WATER)
+                || hasNearbyWater(level, pos)
+                // Shore plants stand above their support, while water is beside that support.
+                || hasNearbyWater(level, pos.below());
     }
 }

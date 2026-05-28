@@ -1,9 +1,9 @@
 {
   "ambientocclusion": false,
   "textures": {
-    "particle": "minecraft:block/bamboo_stalk",
-    "side": "minecraft:block/bamboo_stalk",
-    "top": "minecraft:block/bamboo_stalk_top"
+    "particle": "vivariumlibera:block/plants/plant_stem",
+    "side": "vivariumlibera:block/plants/plant_stem",
+    "top": "vivariumlibera:block/plants/plant_stem_top"
   },
   "elements": [
     {

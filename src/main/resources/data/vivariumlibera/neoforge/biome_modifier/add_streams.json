@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#vivariumlibera:has_streams",
+  "features": "vivariumlibera:stream",
+  "step": "local_modifications"
+}

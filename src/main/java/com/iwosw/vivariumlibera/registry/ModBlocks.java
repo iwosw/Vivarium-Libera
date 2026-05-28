@@ -3,12 +3,15 @@ package com.iwosw.vivariumlibera.registry;
 import com.iwosw.vivariumlibera.VivariumLibera;
 import com.iwosw.vivariumlibera.block.AquaticSimplePlantBlock;
 import com.iwosw.vivariumlibera.block.AquaticTallPlantBlock;
+import com.iwosw.vivariumlibera.block.MortarBlock;
 import com.iwosw.vivariumlibera.block.PlumFenceBlock;
+import com.iwosw.vivariumlibera.block.PlumLeavesBlock;
 import com.iwosw.vivariumlibera.block.PlumSaplingBlock;
 import com.iwosw.vivariumlibera.block.RegrowingPetalsBlock;
 import com.iwosw.vivariumlibera.block.SimplePlantBlock;
 import com.iwosw.vivariumlibera.block.StackablePlantBlock;
 import com.iwosw.vivariumlibera.block.TallPlantBlock;
+import java.util.function.Supplier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ButtonBlock;
@@ -24,6 +27,7 @@ import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -75,9 +79,10 @@ public final class ModBlocks {
     public static final DeferredBlock<RotatedPillarBlock> PLUM_LOG = registerLog("plum_log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_PLUM_LOG = registerLog("stripped_plum_log");
     public static final DeferredBlock<LeavesBlock> PLUM_LEAVES = registerLeaves("plum_leaves");
-    public static final DeferredBlock<LeavesBlock> PLUM_LEAVES_1 = registerLeaves("plum_leaves_1");
-    public static final DeferredBlock<LeavesBlock> PLUM_LEAVES_2 = registerLeaves("plum_leaves_2");
+    public static final DeferredBlock<PlumLeavesBlock> PLUM_LEAVES_1 = registerFruitLeaves("plum_leaves_1", () -> ModItems.PLUM_UNRIPE.get());
+    public static final DeferredBlock<PlumLeavesBlock> PLUM_LEAVES_2 = registerFruitLeaves("plum_leaves_2", () -> ModItems.PLUM_RIPE.get());
     public static final DeferredBlock<SaplingBlock> PLUM_SAPLING = registerSapling("plum_sapling");
+    public static final DeferredBlock<MortarBlock> MORTAR = registerMortar("mortar");
 
     private ModBlocks() {
     }
@@ -158,12 +163,24 @@ public final class ModBlocks {
         return BLOCKS.register(name, () -> new LeavesBlock(leavesProperties()));
     }
 
+    private static DeferredBlock<PlumLeavesBlock> registerFruitLeaves(String name, Supplier<? extends ItemLike> fruit) {
+        return BLOCKS.register(name, () -> new PlumLeavesBlock(leavesProperties(), PLUM_LEAVES, fruit));
+    }
+
     private static DeferredBlock<SaplingBlock> registerSapling(String name) {
         return BLOCKS.register(name, () -> new PlumSaplingBlock(saplingProperties()));
     }
 
+    private static DeferredBlock<MortarBlock> registerMortar(String name) {
+        return BLOCKS.register(name, () -> new MortarBlock(mortarProperties()));
+    }
+
     private static BlockBehaviour.Properties plantProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION);
+    }
+
+    private static BlockBehaviour.Properties mortarProperties() {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).strength(0.8F).noOcclusion();
     }
 
     private static BlockBehaviour.Properties meadowFlowerProperties() {

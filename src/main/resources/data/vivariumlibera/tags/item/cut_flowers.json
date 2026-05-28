@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "vivariumlibera:wormwood_cut",
+    "vivariumlibera:nettle_cut",
+    "vivariumlibera:henbane_cut",
+    "vivariumlibera:st_johns_wort_cut",
+    "vivariumlibera:datura_cut",
+    "vivariumlibera:fireweed_cut",
+    "vivariumlibera:chicory_cut",
+    "vivariumlibera:comfrey_cut",
+    "vivariumlibera:eyebright_cut",
+    "vivariumlibera:sage_cut",
+    "vivariumlibera:calendula_cut",
+    "vivariumlibera:wood_sorrel_red_cut",
+    "vivariumlibera:wood_sorrel_yellow_cut",
+    "vivariumlibera:yarrow_cut",
+    "vivariumlibera:bell_flower_cut",
+    "vivariumlibera:valerian_white_cut",
+    "vivariumlibera:valerian_pink_cut",
+    "vivariumlibera:valerian_red_cut",
+    "vivariumlibera:thistle_cut",
+    "vivariumlibera:mint_cut"
+  ]
+}
