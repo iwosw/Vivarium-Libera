@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=east": { "model": "vivariumlibera:item/wine_jug_full", "y": 90 },
+    "facing=north": { "model": "vivariumlibera:item/wine_jug_full" },
+    "facing=south": { "model": "vivariumlibera:item/wine_jug_full", "y": 180 },
+    "facing=west": { "model": "vivariumlibera:item/wine_jug_full", "y": 270 }
+  }
+}

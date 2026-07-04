@@ -1,0 +1,36 @@
+{
+  "replace": false,
+  "values": {
+    "#vivariumlibera:cut_flowers": {
+      "chance": 0.5
+    },
+    "vivariumlibera:plum_leaves": {
+      "chance": 0.3
+    },
+    "vivariumlibera:plum_leaves_1": {
+      "chance": 0.3
+    },
+    "vivariumlibera:plum_leaves_2": {
+      "chance": 0.3
+    },
+    "vivariumlibera:plum_sapling": {
+      "chance": 0.3
+    },
+    "vivariumlibera:plum_ripe": {
+      "chance": 0.65,
+      "can_villager_compost": true
+    },
+    "vivariumlibera:plum_unripe": {
+      "chance": 0.5
+    },
+    "vivariumlibera:cattail_fluff": {
+      "chance": 0.3
+    },
+    "vivariumlibera:sugarcane_peel": {
+      "chance": 0.3
+    },
+    "vivariumlibera:sugar_cane_pulp": {
+      "chance": 0.5
+    }
+  }
+}

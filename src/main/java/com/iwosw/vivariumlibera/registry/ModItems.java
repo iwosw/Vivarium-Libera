@@ -2,6 +2,7 @@ package com.iwosw.vivariumlibera.registry;
 
 import com.iwosw.vivariumlibera.VivariumLibera;
 import com.iwosw.vivariumlibera.item.HerbalistBookItem;
+import com.iwosw.vivariumlibera.item.KnifeItem;
 import java.util.List;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.food.FoodProperties;
@@ -67,7 +68,7 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> PLUM_SAPLING_ITEM = registerBlockItem("plum_sapling", ModBlocks.PLUM_SAPLING);
     public static final DeferredItem<BlockItem> MORTAR_ITEM = registerBlockItem("mortar", ModBlocks.MORTAR);
 
-    public static final DeferredItem<Item> KNIFE = ITEMS.register("knife", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<KnifeItem> KNIFE = ITEMS.register("knife", () -> new KnifeItem(new Item.Properties()));
     public static final DeferredItem<HerbalistBookItem> HERBALIST_BOOK = ITEMS.register("herbalist_book", () -> new HerbalistBookItem(
             new Item.Properties()
                     .stacksTo(1)
@@ -102,6 +103,13 @@ public final class ModItems {
     public static final DeferredItem<Item> PLUM_RIPE = ITEMS.register("plum_ripe", () -> new Item(new Item.Properties().food(RIPE_PLUM_FOOD)));
     public static final DeferredItem<Item> POISON_BOTTLE = registerSimpleItem("poison_bottle");
     public static final DeferredItem<Item> HERBAL_POWDER = registerSimpleItem("herbal_powder");
+    public static final DeferredItem<BlockItem> JUG = registerBlockItem("jug", ModBlocks.JUG);
+    public static final DeferredItem<BlockItem> WATER_JUG_EMPTY = registerBlockItem("water_jug_empty", ModBlocks.WATER_JUG_EMPTY);
+    public static final DeferredItem<BlockItem> WATER_JUG_FULL = registerBlockItem("water_jug_full", ModBlocks.WATER_JUG_FULL);
+    public static final DeferredItem<BlockItem> OIL_JUG_EMPTY = registerBlockItem("oil_jug_empty", ModBlocks.OIL_JUG_EMPTY);
+    public static final DeferredItem<BlockItem> OIL_JUG_FULL = registerBlockItem("oil_jug_full", ModBlocks.OIL_JUG_FULL);
+    public static final DeferredItem<BlockItem> WINE_JUG_EMPTY = registerBlockItem("wine_jug_empty", ModBlocks.WINE_JUG_EMPTY);
+    public static final DeferredItem<BlockItem> WINE_JUG_FULL = registerBlockItem("wine_jug_full", ModBlocks.WINE_JUG_FULL);
 
     public static final List<DeferredItem<BlockItem>> PLANT_ITEMS = List.of(
             WORMWOOD_ITEM,
@@ -183,6 +191,15 @@ public final class ModItems {
             PLUM_RIPE,
             POISON_BOTTLE,
             HERBAL_POWDER);
+
+    public static final List<DeferredItem<BlockItem>> JUG_ITEMS = List.of(
+            JUG,
+            WATER_JUG_EMPTY,
+            WATER_JUG_FULL,
+            OIL_JUG_EMPTY,
+            OIL_JUG_FULL,
+            WINE_JUG_EMPTY,
+            WINE_JUG_FULL);
 
     private ModItems() {
     }

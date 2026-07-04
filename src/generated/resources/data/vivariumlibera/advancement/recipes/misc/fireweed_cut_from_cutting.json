@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_knife": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vivariumlibera:knife"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vivariumlibera:fireweed_cut_from_cutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_knife"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vivariumlibera:fireweed_cut_from_cutting"
+    ]
+  }
+}

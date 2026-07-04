@@ -6,9 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -59,8 +57,8 @@ public final class MortarBlockEntity extends BlockEntity implements GeoBlockEnti
         return ItemStack.isSameItemSameComponents(storedItem, stack) && storedItem.getCount() < storedItem.getMaxStackSize();
     }
 
-    public boolean canStartGrinding(TagKey<Item> ingredientTag) {
-        return grindTicks <= 0 && getStoredItem().is(ingredientTag);
+    public boolean canStartGrinding() {
+        return grindTicks <= 0 && !getStoredItem().isEmpty();
     }
 
     public void startGrinding(int ticks) {

@@ -6,6 +6,9 @@ import com.iwosw.vivariumlibera.registry.ModItems;
 import java.util.List;
 import java.util.function.Supplier;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -22,6 +25,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 @EventBusSubscriber(modid = VivariumLibera.MOD_ID)
 public final class PlantCuttingEvents {
     private static final int REGROW_TICKS = 1200;
+    private static final TagKey<Item> KNIVES = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tools/knife"));
 
     private static final List<CutDrop> CUT_DROPS = List.of(
             new CutDrop(ModBlocks.WORMWOOD, ModItems.WORMWOOD_CUT),
@@ -60,7 +64,7 @@ public final class PlantCuttingEvents {
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         ItemStack heldItem = event.getEntity().getItemInHand(event.getHand());
-        if (!heldItem.is(ModItems.KNIFE.get())) {
+        if (!heldItem.is(KNIVES)) {
             return;
         }
 

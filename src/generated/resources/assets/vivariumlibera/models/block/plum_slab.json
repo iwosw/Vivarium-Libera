@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "vivariumlibera:block/wood/plum/plum_planks",
+    "side": "vivariumlibera:block/wood/plum/plum_planks",
+    "top": "vivariumlibera:block/wood/plum/plum_planks"
+  }
+}

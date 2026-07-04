@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vivariumlibera:sage"
+    },
+    {
+      "item": "vivariumlibera:knife"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "vivariumlibera:sage_cut"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "type": "farmersdelight:cutting",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "vivariumlibera:bell_flower_blue"
+    },
+    {
+      "item": "vivariumlibera:bell_flower_pink"
+    },
+    {
+      "item": "vivariumlibera:bell_flower_violet"
+    },
+    {
+      "item": "vivariumlibera:bell_flower_white"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 2,
+        "id": "vivariumlibera:bell_flower_cut"
+      }
+    }
+  ],
+  "tool": [
+    {
+      "type": "farmersdelight:item_ability",
+      "action": "knife_dig"
+    },
+    {
+      "tag": "c:tools/knife"
+    }
+  ]
+}

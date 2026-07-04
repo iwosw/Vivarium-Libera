@@ -1,0 +1,37 @@
+{
+  "type": "farmersdelight:cutting",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:sugar_cane"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 1,
+        "id": "vivariumlibera:sugarcane_peel"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "vivariumlibera:sugar_cane_pulp"
+      }
+    }
+  ],
+  "tool": [
+    {
+      "type": "farmersdelight:item_ability",
+      "action": "knife_dig"
+    },
+    {
+      "tag": "c:tools/knife"
+    }
+  ]
+}

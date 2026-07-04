@@ -3,6 +3,7 @@ package com.iwosw.vivariumlibera.registry;
 import com.iwosw.vivariumlibera.VivariumLibera;
 import com.iwosw.vivariumlibera.block.AquaticSimplePlantBlock;
 import com.iwosw.vivariumlibera.block.AquaticTallPlantBlock;
+import com.iwosw.vivariumlibera.block.JugBlock;
 import com.iwosw.vivariumlibera.block.MortarBlock;
 import com.iwosw.vivariumlibera.block.PlumFenceBlock;
 import com.iwosw.vivariumlibera.block.PlumLeavesBlock;
@@ -83,6 +84,13 @@ public final class ModBlocks {
     public static final DeferredBlock<PlumLeavesBlock> PLUM_LEAVES_2 = registerFruitLeaves("plum_leaves_2", () -> ModItems.PLUM_RIPE.get());
     public static final DeferredBlock<SaplingBlock> PLUM_SAPLING = registerSapling("plum_sapling");
     public static final DeferredBlock<MortarBlock> MORTAR = registerMortar("mortar");
+    public static final DeferredBlock<JugBlock> JUG = registerJug("jug");
+    public static final DeferredBlock<JugBlock> WATER_JUG_EMPTY = registerJug("water_jug_empty");
+    public static final DeferredBlock<JugBlock> WATER_JUG_FULL = registerJug("water_jug_full");
+    public static final DeferredBlock<JugBlock> OIL_JUG_EMPTY = registerJug("oil_jug_empty");
+    public static final DeferredBlock<JugBlock> OIL_JUG_FULL = registerJug("oil_jug_full");
+    public static final DeferredBlock<JugBlock> WINE_JUG_EMPTY = registerJug("wine_jug_empty");
+    public static final DeferredBlock<JugBlock> WINE_JUG_FULL = registerJug("wine_jug_full");
 
     private ModBlocks() {
     }
@@ -175,12 +183,20 @@ public final class ModBlocks {
         return BLOCKS.register(name, () -> new MortarBlock(mortarProperties()));
     }
 
+    private static DeferredBlock<JugBlock> registerJug(String name) {
+        return BLOCKS.register(name, () -> new JugBlock(jugProperties()));
+    }
+
     private static BlockBehaviour.Properties plantProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION);
     }
 
     private static BlockBehaviour.Properties mortarProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).strength(0.8F).noOcclusion();
+    }
+
+    private static BlockBehaviour.Properties jugProperties() {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.DECORATED_POT).strength(0.6F).noOcclusion();
     }
 
     private static BlockBehaviour.Properties meadowFlowerProperties() {
