@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "vivariumlibera:plum_log"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "vivariumlibera:plum_planks"
+  }
+}

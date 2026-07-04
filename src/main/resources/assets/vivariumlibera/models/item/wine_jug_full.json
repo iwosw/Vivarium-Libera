@@ -1,0 +1,8 @@
+{
+  "parent": "vivariumlibera:item/template_jug",
+  "textures": {
+    "body": "vivariumlibera:item/jugs/wine_jug_full_body",
+    "neck": "vivariumlibera:item/jugs/wine_jug_full_neck",
+    "rim": "vivariumlibera:item/jugs/wine_jug_full_rim"
+  }
+}

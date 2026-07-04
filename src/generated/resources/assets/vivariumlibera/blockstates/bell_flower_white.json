@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "blooming=false,half=lower": {
+      "model": "vivariumlibera:block/bell_flower_white_bottom"
+    },
+    "blooming=false,half=upper": {
+      "model": "vivariumlibera:block/bell_flower_white_top"
+    },
+    "blooming=true,half=lower": {
+      "model": "vivariumlibera:block/bell_flower_white_bottom"
+    },
+    "blooming=true,half=upper": {
+      "model": "vivariumlibera:block/bell_flower_white_top"
+    }
+  }
+}

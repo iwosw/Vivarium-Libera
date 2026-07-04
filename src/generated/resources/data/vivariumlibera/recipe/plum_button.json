@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "vivariumlibera:plum_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "vivariumlibera:plum_button"
+  }
+}

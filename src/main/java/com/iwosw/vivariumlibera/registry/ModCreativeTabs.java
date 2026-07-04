@@ -22,6 +22,7 @@ public final class ModCreativeTabs {
                     .displayItems((parameters, output) -> {
                         ModItems.PLANT_ITEMS.forEach(item -> output.accept(item.get()));
                         ModItems.CUT_PLANT_ITEMS.forEach(item -> output.accept(item.get()));
+                        ModItems.JUG_ITEMS.forEach(item -> output.accept(item.get()));
                         ModItems.BLOCK_ITEMS.forEach(item -> output.accept(item.get()));
                     })
                     .build());

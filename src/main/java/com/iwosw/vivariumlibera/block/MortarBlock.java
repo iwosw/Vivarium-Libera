@@ -23,6 +23,7 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -48,6 +49,8 @@ public final class MortarBlock extends BaseEntityBlock {
     private static final TagKey<Item> CUT_FLOWERS = TagKey.create(
             Registries.ITEM,
             ResourceLocation.fromNamespaceAndPath(VivariumLibera.MOD_ID, "cut_flowers"));
+    private static final ResourceLocation CULTIO_ASH = ResourceLocation.fromNamespaceAndPath("cultio", "ash");
+    private static final int MAX_CULTIO_ASH_INGREDIENTS = 16;
     private static final int GRIND_RESULT_TICKS = 42;
     private static final VoxelShape SHAPE = Block.box(5.0, 0.0, 5.0, 11.0, 5.0, 11.0);
 
@@ -90,8 +93,8 @@ public final class MortarBlock extends BaseEntityBlock {
             return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
 
-        if (stack.is(CUT_FLOWERS) && level.getBlockEntity(pos) instanceof MortarBlockEntity mortar) {
-            if (!mortar.canAdd(stack)) {
+        if (canCreateGrindingResult(stack) && level.getBlockEntity(pos) instanceof MortarBlockEntity mortar) {
+            if (!canAddGrindingIngredient(mortar, stack)) {
                 return ItemInteractionResult.FAIL;
             }
 
@@ -170,7 +173,7 @@ public final class MortarBlock extends BaseEntityBlock {
         }
 
         if (level.getBlockEntity(pos) instanceof MortarBlockEntity mortar) {
-            if (mortar.canStartGrinding(CUT_FLOWERS)) {
+            if (mortar.canStartGrinding() && canCreateGrindingResult(mortar.getStoredItem())) {
                 mortar.startGrinding(GRIND_RESULT_TICKS);
             }
 
@@ -197,12 +200,13 @@ public final class MortarBlock extends BaseEntityBlock {
         }
 
         ItemStack storedItem = mortar.getStoredItem();
-        if (!storedItem.is(CUT_FLOWERS)) {
+        ItemStack result = createGrindingResult(storedItem);
+        if (result.isEmpty()) {
             mortar.stopGrinding();
             return;
         }
 
-        mortar.setStoredItem(createPowder(storedItem));
+        mortar.setStoredItem(result);
 
         if (level instanceof ServerLevel serverLevel) {
             double x = pos.getX() + 0.5;
@@ -224,6 +228,36 @@ public final class MortarBlock extends BaseEntityBlock {
                 "item.vivariumlibera.herbal_powder.named",
                 getPowderIngredientName(ingredient)));
         return powder;
+    }
+
+    private static boolean canCreateGrindingResult(ItemStack ingredient) {
+        return ingredient.is(CUT_FLOWERS) || isCultioAshIngredient(ingredient);
+    }
+
+    private static boolean canAddGrindingIngredient(MortarBlockEntity mortar, ItemStack ingredient) {
+        if (!mortar.canAdd(ingredient)) {
+            return false;
+        }
+
+        return !isCultioAshIngredient(ingredient) || mortar.getStoredItem().getCount() < MAX_CULTIO_ASH_INGREDIENTS;
+    }
+
+    private static ItemStack createGrindingResult(ItemStack ingredient) {
+        if (ingredient.is(CUT_FLOWERS)) {
+            return createPowder(ingredient);
+        }
+
+        if (isCultioAshIngredient(ingredient)) {
+            Item ash = BuiltInRegistries.ITEM.get(CULTIO_ASH);
+            return ash == null || ash == Items.AIR ? ItemStack.EMPTY : new ItemStack(ash, ingredient.getCount() * 4);
+        }
+
+        return ItemStack.EMPTY;
+    }
+
+    private static boolean isCultioAshIngredient(ItemStack ingredient) {
+        Item ash = BuiltInRegistries.ITEM.get(CULTIO_ASH);
+        return ingredient.is(Items.CHARCOAL) && ash != null && ash != Items.AIR;
     }
 
     private static Component getPowderIngredientName(ItemStack ingredient) {

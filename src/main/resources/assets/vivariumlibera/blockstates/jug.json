@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=east": { "model": "vivariumlibera:item/jug", "y": 90 },
+    "facing=north": { "model": "vivariumlibera:item/jug" },
+    "facing=south": { "model": "vivariumlibera:item/jug", "y": 180 },
+    "facing=west": { "model": "vivariumlibera:item/jug", "y": 270 }
+  }
+}

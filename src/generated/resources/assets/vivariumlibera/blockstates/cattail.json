@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "blooming=false,half=lower,waterlogged=false": {
+      "model": "vivariumlibera:block/cattail_bottom"
+    },
+    "blooming=false,half=lower,waterlogged=true": {
+      "model": "vivariumlibera:block/cattail_bottom"
+    },
+    "blooming=false,half=upper,waterlogged=false": {
+      "model": "vivariumlibera:block/cattail_top"
+    },
+    "blooming=false,half=upper,waterlogged=true": {
+      "model": "vivariumlibera:block/cattail_top"
+    },
+    "blooming=true,half=lower,waterlogged=false": {
+      "model": "vivariumlibera:block/cattail_bottom"
+    },
+    "blooming=true,half=lower,waterlogged=true": {
+      "model": "vivariumlibera:block/cattail_bottom"
+    },
+    "blooming=true,half=upper,waterlogged=false": {
+      "model": "vivariumlibera:block/cattail_top"
+    },
+    "blooming=true,half=upper,waterlogged=true": {
+      "model": "vivariumlibera:block/cattail_top"
+    }
+  }
+}

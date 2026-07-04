@@ -1,5 +1,6 @@
 package com.iwosw.vivariumlibera.client;
 
+import com.iwosw.vivariumlibera.VivariumLibera;
 import com.iwosw.vivariumlibera.registry.ModItems;
 import java.util.List;
 import java.util.function.Supplier;
@@ -9,6 +10,7 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
@@ -36,6 +38,8 @@ public final class HerbalistBookScreen extends Screen {
     private static final int WARN = AMBER;
     private static final int ACCENT = BLUE;
     private static final int DANGER = RED;
+    private static final int LOGO_TEXTURE_SIZE = 32;
+    private static final ResourceLocation LOGO_TEXTURE = ResourceLocation.fromNamespaceAndPath(VivariumLibera.MOD_ID, "textures/gui/logo.png");
     private static final List<Spread> SPREADS = List.of(
             new Spread(
                     "Книга травника",
@@ -325,8 +329,14 @@ public final class HerbalistBookScreen extends Screen {
         guiGraphics.hLine(x + 17, x + width - 17, y + 31, GOLD_DARK);
         guiGraphics.hLine(x + 31, x + width - 31, y + 34, PAGE_SHADOW);
         
-        int introHeight = drawTextWithDropCap(guiGraphics, current.intro(), x + 11, y + 46, width - 22, INK);
-        int noteY = y + 46 + introHeight + 8;
+        int contentY = y + 46;
+        if (this.spread == 0) {
+            renderBookLogo(guiGraphics, x + width / 2, y + 42, 48);
+            contentY = y + 98;
+        }
+
+        int introHeight = drawTextWithDropCap(guiGraphics, current.intro(), x + 11, contentY, width - 22, INK);
+        int noteY = contentY + introHeight + 8;
         
         // Draw note with 11px line spacing
         List<FormattedCharSequence> noteLines = this.font.split(Component.literal(current.note()), width - 22);
@@ -342,6 +352,13 @@ public final class HerbalistBookScreen extends Screen {
         drawCentered(guiGraphics, "ORA ET HERBA", x + width / 2, panelY + 9, INK);
         drawCentered(guiGraphics, "лист, место, польза", x + width / 2, panelY + 23, MUTED);
         drawCentered(guiGraphics, "кликни по растению", x + width / 2, panelY + 37, GOLD_DARK);
+    }
+
+    private void renderBookLogo(GuiGraphics guiGraphics, int centerX, int y, int size) {
+        int x = centerX - size / 2;
+        guiGraphics.fill(x - 5, y - 5, x + size + 5, y + size + 5, 0x663A2117);
+        renderPanelBorder(guiGraphics, x - 6, y - 6, size + 12, size + 12, GOLD_DARK, GOLD);
+        guiGraphics.blit(LOGO_TEXTURE, x, y, size, size, 0.0F, 0.0F, LOGO_TEXTURE_SIZE, LOGO_TEXTURE_SIZE, LOGO_TEXTURE_SIZE, LOGO_TEXTURE_SIZE);
     }
 
     private void renderPlantCards(GuiGraphics guiGraphics, List<Entry> entries, int x, int y, int width, int mouseX, int mouseY) {

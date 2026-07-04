@@ -1,0 +1,40 @@
+{
+  "type": "farmersdelight:cutting",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "vivariumlibera:yarrow_white"
+    },
+    {
+      "item": "vivariumlibera:yarrow_red"
+    },
+    {
+      "item": "vivariumlibera:yarrow_pink"
+    },
+    {
+      "item": "vivariumlibera:yarrow_yellow"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 2,
+        "id": "vivariumlibera:yarrow_cut"
+      }
+    }
+  ],
+  "tool": [
+    {
+      "type": "farmersdelight:item_ability",
+      "action": "knife_dig"
+    },
+    {
+      "tag": "c:tools/knife"
+    }
+  ]
+}

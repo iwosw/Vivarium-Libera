@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=east": { "model": "vivariumlibera:item/water_jug_empty", "y": 90 },
+    "facing=north": { "model": "vivariumlibera:item/water_jug_empty" },
+    "facing=south": { "model": "vivariumlibera:item/water_jug_empty", "y": 180 },
+    "facing=west": { "model": "vivariumlibera:item/water_jug_empty", "y": 270 }
+  }
+}

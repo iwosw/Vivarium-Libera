@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "vivariumlibera:block/wood/plum/pulm_leaves_2"
+  }
+}

@@ -1,0 +1,9 @@
+// 1.21.1	2026-05-30T19:39:04.1916889	Tags for minecraft:block mod id vivariumlibera
+96b8791bcc569029811fc2c08bffa4eb06419aac data/minecraft/tags/block/fence_gates.json
+4e2bd2e5dfdcac2b91a6e97219b13d94f7e3e680 data/minecraft/tags/block/leaves.json
+36f03c918ce46f52664bf33e9cbb8a28f4596b52 data/minecraft/tags/block/logs_that_burn.json
+ff419382179ed979f705b3ef8e042ee20e1893fd data/minecraft/tags/block/mineable/axe.json
+7ae9e81b833370671c39cdaab59b97ae1ccae641 data/minecraft/tags/block/mineable/pickaxe.json
+9f140ace8e8fd7b3d0b25dfe5accef6c39e6b164 data/minecraft/tags/block/planks.json
+37d0e6867e54feb6cdebe5a29394e64df5c5d273 data/minecraft/tags/block/saplings.json
+a7d901f15f89e6be8a6d3723cebfbd786fef689d data/minecraft/tags/block/wooden_fences.json
