@@ -1,5 +1,6 @@
 {
-  "ambientocclusion": true,
+  "ambientocclusion": false,
+  "gui_light": "front",
   "textures": {
     "particle": "#body"
   },
@@ -38,6 +39,7 @@
     {
       "from": [4, 0, 4],
       "to": [12, 10, 12],
+      "shade": false,
       "faces": {
         "north": { "uv": [0, 0, 4, 5], "texture": "#body" },
         "east": { "uv": [4, 0, 8, 5], "texture": "#body" },
@@ -50,6 +52,7 @@
     {
       "from": [6, 10, 6],
       "to": [10, 12, 10],
+      "shade": false,
       "faces": {
         "north": { "uv": [8, 0, 16, 4], "texture": "#neck" },
         "east": { "uv": [8, 4, 16, 8], "texture": "#neck" },
@@ -62,6 +65,7 @@
     {
       "from": [5, 12, 5],
       "to": [11, 13, 11],
+      "shade": false,
       "faces": {
         "north": { "uv": [6, 0, 12, 1], "texture": "#rim" },
         "east": { "uv": [6, 1, 12, 2], "texture": "#rim" },
