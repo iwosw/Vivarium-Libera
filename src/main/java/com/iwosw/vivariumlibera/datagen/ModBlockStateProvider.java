@@ -1,6 +1,7 @@
 package com.iwosw.vivariumlibera.datagen;
 
 import com.iwosw.vivariumlibera.VivariumLibera;
+import com.iwosw.vivariumlibera.block.AlchemyTableBlock;
 import com.iwosw.vivariumlibera.registry.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -105,6 +106,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         // Mortar
         simpleBlock(ModBlocks.MORTAR.get(), models().getExistingFile(ResourceLocation.fromNamespaceAndPath(VivariumLibera.MOD_ID, "block/mortar")));
+
+        // Alchemy Table
+        getVariantBuilder(ModBlocks.ALCHEMY_TABLE.get()).forAllStates(state -> {
+            boolean hasLectern = state.getValue(AlchemyTableBlock.HAS_LECTERN);
+            boolean lit = state.getValue(AlchemyTableBlock.LIT);
+            String modelName = "alchemy_table"
+                    + (hasLectern ? "" : "_no_lectern")
+                    + (lit ? "_lit" : "");
+            var facing = state.getValue(AlchemyTableBlock.FACING);
+            if (facing != net.minecraft.core.Direction.NORTH) {
+                modelName += "_" + facing.getName();
+            }
+            return net.neoforged.neoforge.client.model.generators.ConfiguredModel.builder()
+                    .modelFile(models().getExistingFile(ResourceLocation.fromNamespaceAndPath(
+                            VivariumLibera.MOD_ID, "block/" + modelName)))
+                    .build();
+        });
     }
 
     private void registerPlantBlock(DeferredBlock<? extends Block> block, String textureName) {

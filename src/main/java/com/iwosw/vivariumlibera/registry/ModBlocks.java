@@ -3,6 +3,8 @@ package com.iwosw.vivariumlibera.registry;
 import com.iwosw.vivariumlibera.VivariumLibera;
 import com.iwosw.vivariumlibera.block.AquaticSimplePlantBlock;
 import com.iwosw.vivariumlibera.block.AquaticTallPlantBlock;
+import com.iwosw.vivariumlibera.block.AlchemyTableBlock;
+import com.iwosw.vivariumlibera.block.AlchemyTablePartBlock;
 import com.iwosw.vivariumlibera.block.JugBlock;
 import com.iwosw.vivariumlibera.block.MortarBlock;
 import com.iwosw.vivariumlibera.block.PlumFenceBlock;
@@ -84,6 +86,13 @@ public final class ModBlocks {
     public static final DeferredBlock<PlumLeavesBlock> PLUM_LEAVES_2 = registerFruitLeaves("plum_leaves_2", () -> ModItems.PLUM_RIPE.get());
     public static final DeferredBlock<SaplingBlock> PLUM_SAPLING = registerSapling("plum_sapling");
     public static final DeferredBlock<MortarBlock> MORTAR = registerMortar("mortar");
+    public static final DeferredBlock<AlchemyTableBlock> ALCHEMY_TABLE = registerAlchemyTable("alchemy_table");
+    public static final DeferredBlock<AlchemyTablePartBlock> ALCHEMY_TABLE_PART = BLOCKS.register(
+            "alchemy_table_part",
+            () -> new AlchemyTablePartBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
+                    .strength(2.5F)
+                    .noOcclusion()
+                    .noLootTable()));
     public static final DeferredBlock<JugBlock> JUG = registerJug("jug");
     public static final DeferredBlock<JugBlock> WATER_JUG_EMPTY = registerJug("water_jug_empty");
     public static final DeferredBlock<JugBlock> WATER_JUG_FULL = registerJug("water_jug_full");
@@ -183,6 +192,10 @@ public final class ModBlocks {
         return BLOCKS.register(name, () -> new MortarBlock(mortarProperties()));
     }
 
+    private static DeferredBlock<AlchemyTableBlock> registerAlchemyTable(String name) {
+        return BLOCKS.register(name, () -> new AlchemyTableBlock(alchemyTableProperties()));
+    }
+
     private static DeferredBlock<JugBlock> registerJug(String name) {
         return BLOCKS.register(name, () -> new JugBlock(jugProperties()));
     }
@@ -193,6 +206,13 @@ public final class ModBlocks {
 
     private static BlockBehaviour.Properties mortarProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).strength(0.8F).noOcclusion();
+    }
+
+    private static BlockBehaviour.Properties alchemyTableProperties() {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
+                .strength(2.5F)
+                .lightLevel(state -> state.getValue(AlchemyTableBlock.LIT) ? 10 : 0)
+                .noOcclusion();
     }
 
     private static BlockBehaviour.Properties jugProperties() {

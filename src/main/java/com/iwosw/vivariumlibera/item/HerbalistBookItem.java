@@ -1,22 +1,43 @@
 package com.iwosw.vivariumlibera.item;
 
+import com.iwosw.vivariumlibera.block.entity.AlchemyTableBlockEntity;
 import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.network.Filterable;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.WrittenBookContent;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
 public final class HerbalistBookItem extends Item {
     public HerbalistBookItem(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+        Level level = context.getLevel();
+        if (!(level.getBlockEntity(context.getClickedPos()) instanceof AlchemyTableBlockEntity table) || table.hasBook()) {
+            return InteractionResult.PASS;
+        }
+
+        ItemStack stack = context.getItemInHand();
+        if (!level.isClientSide() && table.placeBook(stack)) {
+            Player player = context.getPlayer();
+            if (player == null || !player.getAbilities().instabuild) {
+                stack.shrink(1);
+            }
+        }
+
+        return InteractionResult.sidedSuccess(level.isClientSide());
     }
 
     @Override

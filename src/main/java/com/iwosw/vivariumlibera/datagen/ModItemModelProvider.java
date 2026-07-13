@@ -60,6 +60,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         trapdoorBottom("plum_trapdoor", ResourceLocation.fromNamespaceAndPath(VivariumLibera.MOD_ID, "block/wood/plum/plum_trapdoor"));
         withExistingParent("mortar", ResourceLocation.fromNamespaceAndPath(VivariumLibera.MOD_ID, "block/mortar"));
+        withExistingParent("alchemy_table", ResourceLocation.fromNamespaceAndPath(VivariumLibera.MOD_ID, "block/alchemy_table"));
     }
 
     private void simpleItem(DeferredItem<? extends Item> item) {

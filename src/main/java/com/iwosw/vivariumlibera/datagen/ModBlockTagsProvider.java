@@ -28,7 +28,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PLUM_STAIRS.get())
                 .add(ModBlocks.PLUM_FENCE.get())
                 .add(ModBlocks.PLUM_FENCE_GATE.get())
-                .add(ModBlocks.PLUM_TRAPDOOR.get());
+                .add(ModBlocks.PLUM_TRAPDOOR.get())
+                .add(ModBlocks.ALCHEMY_TABLE.get());
 
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.PLUM_LOG.get())

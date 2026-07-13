@@ -81,6 +81,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_stone", has(Items.STONE))
                 .save(recipeOutput);
 
+        // Medieval alchemy table (plum wood, stone work surface and iron braces)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ALCHEMY_TABLE.get())
+                .pattern("SIS")
+                .pattern("PPP")
+                .pattern("P P")
+                .define('S', Items.SMOOTH_STONE_SLAB)
+                .define('I', Items.IRON_INGOT)
+                .define('P', ModBlocks.PLUM_PLANKS.get())
+                .unlockedBy("has_plum_planks", has(ModBlocks.PLUM_PLANKS.get()))
+                .save(recipeOutput);
+
         // Knife recipe (1 Iron Ingot + 1 Stick)
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.KNIFE.get())
                 .pattern("I")

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north,has_lectern=true,lit=false": { "model": "vivariumlibera:block/alchemy_table" },
+    "facing=east,has_lectern=true,lit=false": { "model": "vivariumlibera:block/alchemy_table_east" },
+    "facing=south,has_lectern=true,lit=false": { "model": "vivariumlibera:block/alchemy_table_south" },
+    "facing=west,has_lectern=true,lit=false": { "model": "vivariumlibera:block/alchemy_table_west" },
+    "facing=north,has_lectern=true,lit=true": { "model": "vivariumlibera:block/alchemy_table_lit" },
+    "facing=east,has_lectern=true,lit=true": { "model": "vivariumlibera:block/alchemy_table_lit_east" },
+    "facing=south,has_lectern=true,lit=true": { "model": "vivariumlibera:block/alchemy_table_lit_south" },
+    "facing=west,has_lectern=true,lit=true": { "model": "vivariumlibera:block/alchemy_table_lit_west" },
+    "facing=north,has_lectern=false,lit=false": { "model": "vivariumlibera:block/alchemy_table_no_lectern" },
+    "facing=east,has_lectern=false,lit=false": { "model": "vivariumlibera:block/alchemy_table_no_lectern_east" },
+    "facing=south,has_lectern=false,lit=false": { "model": "vivariumlibera:block/alchemy_table_no_lectern_south" },
+    "facing=west,has_lectern=false,lit=false": { "model": "vivariumlibera:block/alchemy_table_no_lectern_west" },
+    "facing=north,has_lectern=false,lit=true": { "model": "vivariumlibera:block/alchemy_table_no_lectern_lit" },
+    "facing=east,has_lectern=false,lit=true": { "model": "vivariumlibera:block/alchemy_table_no_lectern_lit_east" },
+    "facing=south,has_lectern=false,lit=true": { "model": "vivariumlibera:block/alchemy_table_no_lectern_lit_south" },
+    "facing=west,has_lectern=false,lit=true": { "model": "vivariumlibera:block/alchemy_table_no_lectern_lit_west" }
+  }
+}

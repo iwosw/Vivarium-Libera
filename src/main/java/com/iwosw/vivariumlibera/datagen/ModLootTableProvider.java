@@ -48,6 +48,7 @@ public class ModLootTableProvider {
             dropSelf(ModBlocks.STRIPPED_PLUM_LOG.get());
             dropSelf(ModBlocks.PLUM_SAPLING.get());
             dropSelf(ModBlocks.MORTAR.get());
+            dropSelf(ModBlocks.ALCHEMY_TABLE.get());
             dropSelf(ModBlocks.JUG.get());
             dropSelf(ModBlocks.WATER_JUG_EMPTY.get());
             dropSelf(ModBlocks.WATER_JUG_FULL.get());
