@@ -18,6 +18,7 @@
   "block.vivariumlibera.belladonna": "Белладонна",
   "block.vivariumlibera.mint": "Мята",
   "block.vivariumlibera.mortar": "Ступка",
+  "block.vivariumlibera.alchemy_table": "Алхимический стол",
   "block.vivariumlibera.nettle": "Крапива",
   "block.vivariumlibera.oil_jug_empty": "Пустой кувшин для масла",
   "block.vivariumlibera.oil_jug_full": "Кувшин с маслом",
@@ -88,5 +89,18 @@
   "item.vivariumlibera.yarrow_cut": "Нарезанный тысячелистник",
   "itemGroup.vivariumlibera": "Vivarium Libera",
   "itemGroup.vivariumlibera.tools": "Vivarium Libera: Инструменты",
-  "modmenu.nameTranslation.vivariumlibera": "Vivarium Libera"
+  "modmenu.nameTranslation.vivariumlibera": "Vivarium Libera",
+  "gui.vivariumlibera.alchemy_table.title": "Алхимический стол",
+  "gui.vivariumlibera.alchemy_table.fire_lit": "Угли горят",
+  "gui.vivariumlibera.alchemy_table.fire_unlit": "Угли холодны",
+  "gui.vivariumlibera.alchemy_table.hint_lit": "Стол готов к работе.",
+  "gui.vivariumlibera.alchemy_table.hint_unlit": "Подожгите верхние угли огнивом.",
+  "gui.vivariumlibera.alchemy_table.hint_no_lectern": "Установите кафедру, чтобы вернуть стойку.",
+  "gui.vivariumlibera.alchemy_table.selected_jug": "Выбранный кувшин",
+  "gui.vivariumlibera.alchemy_table.no_jug": "Кувшин не выбран",
+  "gui.vivariumlibera.alchemy_table.guide_ignite": "Поджечь угли",
+  "gui.vivariumlibera.alchemy_table.guide_jug": "Поставить / снять кувшин",
+  "gui.vivariumlibera.alchemy_table.guide_lectern": "Сломать / вернуть стойку",
+  "gui.vivariumlibera.alchemy_table.open_book": "Открыть книгу",
+  "gui.vivariumlibera.alchemy_table.close": "Закрыть"
 }

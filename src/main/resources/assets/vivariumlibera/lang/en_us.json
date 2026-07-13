@@ -18,6 +18,7 @@
   "block.vivariumlibera.belladonna": "Belladonna",
   "block.vivariumlibera.mint": "Mint",
   "block.vivariumlibera.mortar": "Mortar",
+  "block.vivariumlibera.alchemy_table": "Alchemy Table",
   "block.vivariumlibera.nettle": "Nettle",
   "block.vivariumlibera.oil_jug_empty": "Empty Oil Jug",
   "block.vivariumlibera.oil_jug_full": "Oil Jug",
@@ -88,5 +89,18 @@
   "item.vivariumlibera.yarrow_cut": "Cut Yarrow",
   "itemGroup.vivariumlibera": "Vivarium Libera",
   "itemGroup.vivariumlibera.tools": "Vivarium Libera: Tools",
-  "modmenu.nameTranslation.vivariumlibera": "Vivarium Libera"
+  "modmenu.nameTranslation.vivariumlibera": "Vivarium Libera",
+  "gui.vivariumlibera.alchemy_table.title": "Alchemy Table",
+  "gui.vivariumlibera.alchemy_table.fire_lit": "Coals: lit",
+  "gui.vivariumlibera.alchemy_table.fire_unlit": "Coals: cold",
+  "gui.vivariumlibera.alchemy_table.hint_lit": "The table is ready.",
+  "gui.vivariumlibera.alchemy_table.hint_unlit": "Light the upper coals with flint and steel.",
+  "gui.vivariumlibera.alchemy_table.hint_no_lectern": "Place a lectern to restore the book stand.",
+  "gui.vivariumlibera.alchemy_table.selected_jug": "Selected jug",
+  "gui.vivariumlibera.alchemy_table.no_jug": "No jug",
+  "gui.vivariumlibera.alchemy_table.guide_ignite": "Ignite coals",
+  "gui.vivariumlibera.alchemy_table.guide_jug": "Place / remove jug",
+  "gui.vivariumlibera.alchemy_table.guide_lectern": "Break / restore stand",
+  "gui.vivariumlibera.alchemy_table.open_book": "Open book",
+  "gui.vivariumlibera.alchemy_table.close": "Close"
 }

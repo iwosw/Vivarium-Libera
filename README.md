@@ -1,105 +1,127 @@
+<p align="center">
+  <img src="assets/vivarium-libera-logo.png" alt="Vivarium Libera" width="520">
+</p>
+
+<p align="center">
+  <a href="README.ru.md">Русская версия</a>
+</p>
+
+<p align="center">
+  <img alt="Minecraft 1.21.1" src="https://img.shields.io/badge/Minecraft-1.21.1-5B8731?style=for-the-badge">
+  <img alt="NeoForge 21.1.172+" src="https://img.shields.io/badge/NeoForge-21.1.172%2B-EA6847?style=for-the-badge">
+  <img alt="Java 21" src="https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white">
+  <img alt="Status: Alpha" src="https://img.shields.io/badge/Status-Alpha-CB8B2C?style=for-the-badge">
+</p>
+
 # Vivarium Libera
 
-[Russian version](README.ru.md)
+**Vivarium Libera** is a nature and herbalism expansion for Minecraft. It fills the world with medicinal plants, wetland flora, plum trees, streams, handcrafted decorations, and the first tools of an herbalist's workshop—while keeping everything close to Minecraft's visual language.
 
-Vivarium Libera is a NeoForge mod for Minecraft `1.21.1` that expands the world with living natural details: herbs, wetland plants, plum trees, streams, decorative objects, and herbalist crafting.
+> [!WARNING]
+> Vivarium Libera is in **early alpha**. Features, recipes, balance, and world-generation behavior may change between builds. Back up important worlds before updating.
 
-The mod is in early alpha and active development. Unfinished mechanics, balance changes, and version-to-version incompatibilities are expected. The current version already adds new plant content, tools, recipes, localization, and first integrations with other mods.
+## At a glance
 
-## Overview
+| Component | Supported version |
+| --- | --- |
+| Minecraft | `1.21.1` |
+| Mod loader | NeoForge `21.1.172` or newer `21.1.x` |
+| Java | `21` |
+| GeckoLib | `4.8.4+` — required |
+| Farmer's Delight | Optional integration |
+| Mod version | `0.1.0` (alpha) |
+| Mod ID | `vivariumlibera` |
 
-- Minecraft: `1.21.1`
-- Loader: NeoForge `21.1.x`
-- Java: `21`
-- Mod ID: `vivariumlibera`
-- Required dependency: GeckoLib
-- Optional integration: Farmer's Delight
-- Dev integration: JEI API/runtime for recipe checks
+Install the mod and GeckoLib on both the client and the server. Farmer's Delight is optional; when present, Vivarium Libera adds compatible cutting recipes and ingredient tags.
 
-## Content
+## Features
 
-- Decorative and functional plants: wormwood, nettle, henbane, St. John's wort, datura, fireweed, chicory, calamus, cattail, calendula, comfrey, eyebright, sage, crow's eye, lycoris, mint, thistle, belladonna, wood sorrel, yarrow, bellflowers, and valerian.
-- Different placement rules for regular, moisture-loving, and aquatic plants.
-- Cuttable plants with regrowth and separate drop items.
-- Herbalist knife that cuts suitable plants and supports tool tags.
-- Mortar with a block entity, animation, and herbal ingredient processing.
-- Herbalist book with an in-game screen and reference HTML document.
-- Plum wood set: logs, stripped logs, planks, stairs, slabs, button, pressure plate, fence, fence gate, trapdoor, leaves, and sapling.
-- Plum sapling grows a compact tree with several foliage stages.
-- Decorative jugs: regular, water, oil, and wine variants in empty and full states.
-- Jugs can be held as items, placed in the world, and picked back up when broken.
-- Stream worldgen feature with configured/placed features and a biome tag.
-- Poison effect is preserved when trying to remove it with milk.
+### A living herbarium
+
+- More than twenty medicinal, poisonous, decorative, wetland, and aquatic plants.
+- Dedicated placement rules for ordinary, moisture-loving, and water plants.
+- Harvestable plants that can be cut with an herbalist's knife and regrow over time.
+- English and Russian names for the mod's blocks, items, screens, and creative tabs.
+
+### Herbalist's craft
+
+- An herbalist's knife for gathering usable plant material.
+- An animated mortar with block-entity processing for herbal ingredients.
+- A readable herbalist's book with an in-game reference screen.
+- Herbal powders, poison, and an expanding set of workshop recipes.
+- A multi-block alchemy table currently under active development.
+
+### Nature and decoration
+
+- A complete plum wood family: logs, stripped logs, planks, stairs, slabs, fences, gates, buttons, pressure plates, trapdoors, leaves, and saplings.
+- Compact plum trees with several foliage stages and ripe and unripe fruit.
+- Placeable clay jugs for water, oil, and wine, each with empty and full variants.
+- Natural stream world generation designed to make landscapes feel less static.
 
 ## Integrations
 
-- Farmer's Delight: plant cutting recipes and compatible ingredient tags.
-- JEI: dev dependency for checking recipe display in the client.
-- Common `c` tags: fruits, herbs, knives, and compatible item groups.
-- NeoForge data maps: compostables for organic items.
+| Project / API | Integration |
+| --- | --- |
+| [GeckoLib](https://github.com/bernie-g/geckolib) | Required animation runtime |
+| [Farmer's Delight](https://github.com/vectorwing/FarmersDelight) | Optional cutting recipes and shared ingredient tags |
+| [JEI](https://github.com/mezz/JustEnoughItems) | Development runtime for recipe-display checks |
+| NeoForge common tags | Shared fruit, herb, knife, and compostable item groups |
 
-## Localization
+## Installation
 
-Supported languages:
+1. Install Minecraft `1.21.1` with NeoForge `21.1.172` or a newer `21.1.x` build.
+2. Install GeckoLib `4.8.4` or newer for Minecraft `1.21.1`.
+3. Download Vivarium Libera from the [GitHub Releases](https://github.com/iwosw/Vivarium-Libera/releases) page, or build it from source.
+4. Put the Vivarium Libera and GeckoLib `.jar` files into the `mods` folder on the client and server.
+5. Optionally install Farmer's Delight to enable its compatibility recipes.
 
-- `en_us`
-- `ru_ru`
+## Build from source
 
-Main block, item, creative tab, and herbalist book names are stored in lang files.
-
-## Build
-
-On Windows:
-
-```bat
-gradlew.bat build
-```
-
-On Linux/macOS:
+The project includes the Gradle Wrapper; only JDK 21 is required.
 
 ```bash
+# Windows
+./gradlew.bat build
+
+# Linux / macOS
 ./gradlew build
 ```
 
-The built `.jar` is generated in `build/libs`.
+The compiled mod is written to `build/libs/`.
 
-## Development Run
+Useful development tasks:
 
-Client:
-
-```bat
-gradlew.bat runClient
+```bash
+./gradlew runClient
+./gradlew runServer
+./gradlew runData
 ```
 
-Server:
+## Project layout
 
-```bat
-gradlew.bat runServer
-```
+| Path | Purpose |
+| --- | --- |
+| `src/main/java/com/iwosw/vivariumlibera` | Gameplay code, registries, client code, integrations, and data generators |
+| `src/main/resources/assets/vivariumlibera` | Textures, models, blockstates, animations, geometry, and localization |
+| `src/main/resources/data` | Recipes, tags, loot tables, data maps, and world-generation data |
+| `src/generated/resources` | Data-generator output included in development builds |
+| `docs` | Herbalist reference material, concepts, and implementation notes |
 
-Data generation:
+## Support and contributing
 
-```bat
-gradlew.bat runData
-```
+Found a bug or incompatibility? [Open an issue](https://github.com/iwosw/Vivarium-Libera/issues) and include:
 
-## Project Structure
+- the exact Vivarium Libera, NeoForge, GeckoLib, and Minecraft versions;
+- whether the issue happens in single-player or on a dedicated server;
+- steps to reproduce it; and
+- the relevant `latest.log` excerpt or crash report.
 
-- `src/main/java/com/iwosw/vivariumlibera` - main Java mod code.
-- `src/main/java/com/iwosw/vivariumlibera/block` - custom blocks and behavior.
-- `src/main/java/com/iwosw/vivariumlibera/block/entity` - block entities.
-- `src/main/java/com/iwosw/vivariumlibera/client` - client screens and renderers.
-- `src/main/java/com/iwosw/vivariumlibera/compat` - integrations with other mods.
-- `src/main/java/com/iwosw/vivariumlibera/datagen` - model, tag, recipe, and loot table generators.
-- `src/main/java/com/iwosw/vivariumlibera/item` - custom items.
-- `src/main/java/com/iwosw/vivariumlibera/registry` - block, item, tab, block entity, and worldgen feature registration.
-- `src/main/resources/assets/vivariumlibera` - models, textures, blockstates, animations, geometry, and localization.
-- `src/main/resources/data` - recipes, tags, loot tables, data maps, and worldgen data.
-- `docs` - supporting documentation and HTML materials.
+Focused bug fixes and improvements are welcome. Please keep pull requests small, explain player-visible changes, and verify them with `./gradlew build` before submission.
 
-## Development Notes
+## License
 
-- The project uses Gradle Wrapper, so a local Gradle installation is not required.
-- `build/`, `.gradle/`, `run/`, and IDE files should not be committed.
-- `.bbmodel` files are excluded from final build resources.
-- Generated resources are connected through `src/generated/resources`; asset duplicates and `.cache` are excluded during `processResources`.
+Vivarium Libera is distributed under the terms in [LICENSE](LICENSE). The source code and assets are **All Rights Reserved** unless the license explicitly grants a use.
+
+---
+
+<p align="center"><em>Grow the wild. Study the useful. Craft with care.</em></p>

@@ -15,5 +15,6 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntities.MORTAR.get(), MortarBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.ALCHEMY_TABLE.get(), AlchemyTableBlockEntityRenderer::new);
     }
 }

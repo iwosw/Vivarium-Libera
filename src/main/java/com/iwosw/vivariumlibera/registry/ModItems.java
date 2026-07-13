@@ -67,6 +67,7 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> PLUM_LEAVES_2_ITEM = registerBlockItem("plum_leaves_2", ModBlocks.PLUM_LEAVES_2);
     public static final DeferredItem<BlockItem> PLUM_SAPLING_ITEM = registerBlockItem("plum_sapling", ModBlocks.PLUM_SAPLING);
     public static final DeferredItem<BlockItem> MORTAR_ITEM = registerBlockItem("mortar", ModBlocks.MORTAR);
+    public static final DeferredItem<BlockItem> ALCHEMY_TABLE_ITEM = registerBlockItem("alchemy_table", ModBlocks.ALCHEMY_TABLE);
 
     public static final DeferredItem<KnifeItem> KNIFE = ITEMS.register("knife", () -> new KnifeItem(new Item.Properties()));
     public static final DeferredItem<HerbalistBookItem> HERBALIST_BOOK = ITEMS.register("herbalist_book", () -> new HerbalistBookItem(
@@ -159,7 +160,8 @@ public final class ModItems {
             PLUM_LEAVES_1_ITEM,
             PLUM_LEAVES_2_ITEM,
             PLUM_SAPLING_ITEM,
-            MORTAR_ITEM);
+            MORTAR_ITEM,
+            ALCHEMY_TABLE_ITEM);
 
     public static final List<DeferredItem<Item>> CUT_PLANT_ITEMS = List.of(
             WORMWOOD_CUT,
