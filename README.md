@@ -1,105 +1,105 @@
 # Vivarium Libera
 
-[English version](README.en.md)
+[Russian version](README.ru.md)
 
-Vivarium Libera - NeoForge-мод для Minecraft `1.21.1`, который расширяет мир живыми природными деталями: травами, болотными растениями, сливовыми деревьями, ручьями, декоративными предметами и ремеслом травника.
+Vivarium Libera is a NeoForge mod for Minecraft `1.21.1` that expands the world with living natural details: herbs, wetland plants, plum trees, streams, decorative objects, and herbalist crafting.
 
-Мод находится в ранней альфе и активной разработке. Возможны незавершённые механики, изменения баланса и несовместимости между версиями. Текущая версия уже добавляет новый растительный контент, инструменты, рецепты, локализацию и первые интеграции с другими модами.
+The mod is in early alpha and active development. Unfinished mechanics, balance changes, and version-to-version incompatibilities are expected. The current version already adds new plant content, tools, recipes, localization, and first integrations with other mods.
 
-## Основное
+## Overview
 
 - Minecraft: `1.21.1`
 - Loader: NeoForge `21.1.x`
 - Java: `21`
 - Mod ID: `vivariumlibera`
-- Обязательная зависимость: GeckoLib
-- Опциональная интеграция: Farmer's Delight
-- Dev-интеграция: JEI API/runtime для проверки рецептов
+- Required dependency: GeckoLib
+- Optional integration: Farmer's Delight
+- Dev integration: JEI API/runtime for recipe checks
 
-## Контент
+## Content
 
-- Декоративные и функциональные растения: полынь, крапива, белена, зверобой, дурман, иван-чай, цикорий, аир, рогоз, календула, окопник, очанка, шалфей, вороний глаз, ликорис, мята, чертополох, белладонна, кислица, тысячелистник, колокольчики и валериана.
-- Разные правила посадки для обычных, влаголюбивых и водных растений.
-- Срезаемые растения с восстановлением и отдельными предметами-дропами.
-- Нож травника, который срезает подходящие растения и поддерживает теги инструментов.
-- Ступка с блок-энтити, анимацией и обработкой травяных ингредиентов.
-- Книга травника с внутриигровым экраном и справочным HTML-документом.
-- Сливовая древесина: брёвна, обтёсанные брёвна, доски, ступеньки, плиты, кнопка, нажимная плита, забор, калитка, люк, листья и саженец.
-- Сливовый саженец выращивает компактное дерево с несколькими стадиями листвы.
-- Декоративные кувшины: обычный, водяной, масляный и винный варианты в пустом и полном состоянии.
-- Кувшины можно держать как предметы, ставить в мир и забирать обратно при ломании.
-- Worldgen-фича ручьёв с configured/placed feature и тегом биомов.
-- Сохранение эффекта яда при попытке снять его молоком.
+- Decorative and functional plants: wormwood, nettle, henbane, St. John's wort, datura, fireweed, chicory, calamus, cattail, calendula, comfrey, eyebright, sage, crow's eye, lycoris, mint, thistle, belladonna, wood sorrel, yarrow, bellflowers, and valerian.
+- Different placement rules for regular, moisture-loving, and aquatic plants.
+- Cuttable plants with regrowth and separate drop items.
+- Herbalist knife that cuts suitable plants and supports tool tags.
+- Mortar with a block entity, animation, and herbal ingredient processing.
+- Herbalist book with an in-game screen and reference HTML document.
+- Plum wood set: logs, stripped logs, planks, stairs, slabs, button, pressure plate, fence, fence gate, trapdoor, leaves, and sapling.
+- Plum sapling grows a compact tree with several foliage stages.
+- Decorative jugs: regular, water, oil, and wine variants in empty and full states.
+- Jugs can be held as items, placed in the world, and picked back up when broken.
+- Stream worldgen feature with configured/placed features and a biome tag.
+- Poison effect is preserved when trying to remove it with milk.
 
-## Интеграции
+## Integrations
 
-- Farmer's Delight: рецепты нарезки растений и совместимые теги ингредиентов.
-- JEI: dev-зависимость для проверки отображения рецептов в клиенте.
-- Common tags `c`: фрукты, травы, ножи и совместимые группы предметов.
-- NeoForge data maps: compostables для органических предметов.
+- Farmer's Delight: plant cutting recipes and compatible ingredient tags.
+- JEI: dev dependency for checking recipe display in the client.
+- Common `c` tags: fruits, herbs, knives, and compatible item groups.
+- NeoForge data maps: compostables for organic items.
 
-## Локализация
+## Localization
 
-Поддерживаются языки:
+Supported languages:
 
 - `en_us`
 - `ru_ru`
 
-Основные названия блоков, предметов, creative-вкладок и книги травника вынесены в lang-файлы.
+Main block, item, creative tab, and herbalist book names are stored in lang files.
 
-## Сборка
+## Build
 
-На Windows:
+On Windows:
 
 ```bat
 gradlew.bat build
 ```
 
-На Linux/macOS:
+On Linux/macOS:
 
 ```bash
 ./gradlew build
 ```
 
-Готовый `.jar` появляется в `build/libs`.
+The built `.jar` is generated in `build/libs`.
 
-## Запуск Для Разработки
+## Development Run
 
-Клиент:
+Client:
 
 ```bat
 gradlew.bat runClient
 ```
 
-Сервер:
+Server:
 
 ```bat
 gradlew.bat runServer
 ```
 
-Генерация данных:
+Data generation:
 
 ```bat
 gradlew.bat runData
 ```
 
-## Структура Проекта
+## Project Structure
 
-- `src/main/java/com/iwosw/vivariumlibera` - основной Java-код мода.
-- `src/main/java/com/iwosw/vivariumlibera/block` - кастомные блоки и их поведение.
+- `src/main/java/com/iwosw/vivariumlibera` - main Java mod code.
+- `src/main/java/com/iwosw/vivariumlibera/block` - custom blocks and behavior.
 - `src/main/java/com/iwosw/vivariumlibera/block/entity` - block entities.
-- `src/main/java/com/iwosw/vivariumlibera/client` - клиентские экраны и рендеры.
-- `src/main/java/com/iwosw/vivariumlibera/compat` - интеграции с другими модами.
-- `src/main/java/com/iwosw/vivariumlibera/datagen` - генераторы моделей, тегов, рецептов и loot tables.
-- `src/main/java/com/iwosw/vivariumlibera/item` - кастомные предметы.
-- `src/main/java/com/iwosw/vivariumlibera/registry` - регистрация блоков, предметов, вкладок, block entities и worldgen-фич.
-- `src/main/resources/assets/vivariumlibera` - модели, текстуры, blockstates, анимации, геометрия и локализация.
-- `src/main/resources/data` - рецепты, теги, loot tables, data maps и worldgen-данные.
-- `docs` - вспомогательная документация и HTML-материалы.
+- `src/main/java/com/iwosw/vivariumlibera/client` - client screens and renderers.
+- `src/main/java/com/iwosw/vivariumlibera/compat` - integrations with other mods.
+- `src/main/java/com/iwosw/vivariumlibera/datagen` - model, tag, recipe, and loot table generators.
+- `src/main/java/com/iwosw/vivariumlibera/item` - custom items.
+- `src/main/java/com/iwosw/vivariumlibera/registry` - block, item, tab, block entity, and worldgen feature registration.
+- `src/main/resources/assets/vivariumlibera` - models, textures, blockstates, animations, geometry, and localization.
+- `src/main/resources/data` - recipes, tags, loot tables, data maps, and worldgen data.
+- `docs` - supporting documentation and HTML materials.
 
-## Примечания Для Разработки
+## Development Notes
 
-- Проект использует Gradle Wrapper, локальная установка Gradle не требуется.
-- `build/`, `.gradle/`, `run/` и IDE-файлы не должны попадать в git.
-- `.bbmodel` исключены из итоговых ресурсов сборки.
-- Сгенерированные ресурсы подключаются через `src/generated/resources`, при этом asset-дубликаты и `.cache` исключаются на этапе `processResources`.
+- The project uses Gradle Wrapper, so a local Gradle installation is not required.
+- `build/`, `.gradle/`, `run/`, and IDE files should not be committed.
+- `.bbmodel` files are excluded from final build resources.
+- Generated resources are connected through `src/generated/resources`; asset duplicates and `.cache` are excluded during `processResources`.
