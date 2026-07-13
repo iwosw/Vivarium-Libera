@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/vivarium-libera-logo.png" alt="Vivarium Libera" width="520">
+  <img src="assets/vivarium-libera-logo.png" alt="Vivarium Libera" width="290">
 </p>
 
 <p align="center">
