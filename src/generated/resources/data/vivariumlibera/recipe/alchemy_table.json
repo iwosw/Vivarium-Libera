@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "item": "vivariumlibera:plum_planks"
+    },
+    "S": {
+      "item": "minecraft:smooth_stone_slab"
+    }
+  },
+  "pattern": [
+    "SIS",
+    "PPP",
+    "P P"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vivariumlibera:alchemy_table"
+  }
+}

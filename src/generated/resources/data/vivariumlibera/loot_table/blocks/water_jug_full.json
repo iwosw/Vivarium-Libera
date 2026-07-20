@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "vivariumlibera:water_jug_full"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "vivariumlibera:blocks/water_jug_full"
+}

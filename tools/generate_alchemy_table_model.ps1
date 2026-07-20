@@ -10,6 +10,51 @@ $ErrorActionPreference = "Stop"
 $elements = [System.Collections.Generic.List[object]]::new()
 $modelXOffset = 8
 
+function Get-FaceSize {
+    param(
+        [double[]]$From,
+        [double[]]$To,
+        [string]$Face
+    )
+
+    $width = $To[0] - $From[0]
+    $height = $To[1] - $From[1]
+    $depth = $To[2] - $From[2]
+    switch ($Face) {
+        { $_ -in @("north", "south") } { return @($width, $height) }
+        { $_ -in @("east", "west") } { return @($depth, $height) }
+        default { return @($width, $depth) }
+    }
+}
+
+function Get-FaceUv {
+    param(
+        [double[]]$From,
+        [double[]]$To,
+        [string]$Face
+    )
+
+    $size = Get-FaceSize $From $To $Face
+    $uvOrigin = switch ($Face) {
+        { $_ -in @("north", "south") } { @($From[0], $From[1]); break }
+        { $_ -in @("east", "west") } { @($From[2], $From[1]); break }
+        default { @($From[0], $From[2]) }
+    }
+
+    # Crop a different valid area of the texture for each model-space position.
+    # This preserves one texel per model unit without stamping the same top-left
+    # corner onto every small masonry piece.
+    $maxU = [Math]::Max(0.0, (16.0 - $size[0]))
+    $maxV = [Math]::Max(0.0, (16.0 - $size[1]))
+    $uSteps = [Math]::Floor($maxU) + 1
+    $vSteps = [Math]::Floor($maxV) + 1
+    $u = if ($maxU -eq 0) { 0 } else { (($uvOrigin[0] % $uSteps) + $uSteps) % $uSteps }
+    $v = if ($maxV -eq 0) { 0 } else { (($uvOrigin[1] % $vSteps) + $vSteps) % $vSteps }
+    $u = [Math]::Min($maxU, [Math]::Max(0.0, [double]$u))
+    $v = [Math]::Min($maxV, [Math]::Max(0.0, [double]$v))
+    return @($u, $v, ($u + $size[0]), ($v + $size[1]))
+}
+
 function Add-Cube {
     param(
         [string]$Name,
@@ -24,40 +69,12 @@ function Add-Cube {
     $From = @(($From[0] + $modelXOffset), $From[1], $From[2])
     $To = @(($To[0] + $modelXOffset), $To[1], $To[2])
 
-    $width = $To[0] - $From[0]
-    $height = $To[1] - $From[1]
-    $depth = $To[2] - $From[2]
-    $dimensions = [ordered]@{
-        north = @($width, $height)
-        east = @($depth, $height)
-        south = @($width, $height)
-        west = @($depth, $height)
-        up = @($width, $depth)
-        down = @($width, $depth)
-    }
     $faces = [ordered]@{}
 
     foreach ($face in $VisibleFaces) {
         $faceTexture = if ($FaceTextures.ContainsKey($face)) { $FaceTextures[$face] } else { $Texture }
-        $size = $dimensions[$face]
-        $uvOrigin = switch ($face) {
-            { $_ -in @("north", "south") } { @($From[0], $From[1]); break }
-            { $_ -in @("east", "west") } { @($From[2], $From[1]); break }
-            default { @($From[0], $From[2]) }
-        }
-        # Crop a different valid area of the texture for each model-space position.
-        # This preserves one texel per model unit without stamping the same top-left
-        # corner onto every small masonry piece.
-        $maxU = [Math]::Max(0.0, (16.0 - $size[0]))
-        $maxV = [Math]::Max(0.0, (16.0 - $size[1]))
-        $uSteps = [Math]::Floor($maxU) + 1
-        $vSteps = [Math]::Floor($maxV) + 1
-        $u = if ($maxU -eq 0) { 0 } else { (($uvOrigin[0] % $uSteps) + $uSteps) % $uSteps }
-        $v = if ($maxV -eq 0) { 0 } else { (($uvOrigin[1] % $vSteps) + $vSteps) % $vSteps }
-        $u = [Math]::Min($maxU, [Math]::Max(0.0, [double]$u))
-        $v = [Math]::Min($maxV, [Math]::Max(0.0, [double]$v))
         $faces[$face] = [ordered]@{
-            uv = @($u, $v, ($u + $size[0]), ($v + $size[1]))
+            uv = Get-FaceUv $From $To $face
             texture = "#$faceTexture"
         }
     }
@@ -119,7 +136,11 @@ Add-TiledBox "front_arch_right" @(13, 8.5, 0) @(15, 12, 8)
 Add-TiledBox "front_arch_inner_left" @(3, 10.5, 0) @(5, 12, 8)
 Add-TiledBox "front_arch_inner_right" @(11, 10.5, 0) @(13, 12, 8)
 Add-TiledBox "niche_floor" @(1, 0, 0) @(15, 1, 8) "plaster" @{ up = "soot" }
-Add-TiledBox "niche_back" @(1, 1, 7) @(15, 12, 8) "plaster" @{ north = "soot" }
+# Follow the stepped opening instead of hiding one large backing slab inside
+# the arch blocks. This avoids coplanar faces and flicker at the rear seam.
+Add-TiledBox "niche_back_lower" @(1, 1, 7) @(15, 8.5, 8) "plaster" @{ north = "soot" }
+Add-TiledBox "niche_back_middle" @(3, 8.5, 7) @(13, 10.5, 8) "plaster" @{ north = "soot" }
+Add-TiledBox "niche_back_upper" @(5, 10.5, 7) @(11, 12, 8) "plaster" @{ north = "soot" }
 Add-TiledBox "center_masonry_core" @(1, 0, 8) @(15, 16, 32) "plaster"
 
 # Worktop overhang, split into four tiles instead of stretching one sprite over 32x24 units.
@@ -135,7 +156,9 @@ Add-TiledBox "rear_arch_left_step" @(3, 23, 27) @(5, 25, 32)
 Add-TiledBox "rear_arch_right_step" @(11, 23, 27) @(13, 25, 32)
 Add-TiledBox "rear_arch_inner_left" @(5, 24, 27) @(7, 25, 32)
 Add-TiledBox "rear_arch_inner_right" @(9, 24, 27) @(11, 25, 32)
-Add-TiledBox "rear_niche_back" @(1, 17.5, 30) @(15, 25, 32) "plaster" @{ north = "soot" }
+Add-TiledBox "rear_niche_back_lower" @(3, 17.5, 30) @(13, 23, 32) "plaster" @{ north = "soot" }
+Add-TiledBox "rear_niche_back_middle" @(5, 23, 30) @(11, 24, 32) "plaster" @{ north = "soot" }
+Add-TiledBox "rear_niche_back_upper" @(7, 24, 30) @(9, 25, 32) "plaster" @{ north = "soot" }
 
 # Wider stepped octagonal hearth; soot appears only on inner vertical faces.
 Add-Cube "hearth_front" @(1, 17.5, 7) @(11, 20, 9) "plaster" @{ south = "soot" }
@@ -146,7 +169,9 @@ Add-Cube "hearth_right" @(13, 17.5, 10) @(15, 20, 17) "plaster" @{ west = "soot"
 Add-Cube "hearth_back_left" @(-1, 17.5, 17) @(1, 20, 19) "plaster"
 Add-Cube "hearth_back_right" @(11, 17.5, 17) @(13, 20, 19) "plaster"
 Add-Cube "hearth_back" @(1, 17.5, 18) @(11, 20, 20) "plaster" @{ north = "soot" }
-Add-Cube "hearth_bed" @(-1, 17.55, 9) @(13, 18.0, 18) "coal"
+Add-Cube "hearth_bed_front" @(1, 17.55, 9) @(11, 18.0, 10) "coal"
+Add-Cube "hearth_bed_middle" @(-1, 17.55, 10) @(13, 18.0, 17) "coal"
+Add-Cube "hearth_bed_back" @(1, 17.55, 17) @(11, 18.0, 18) "coal"
 
 # A low mound of separate unlit coals instead of one flat rectangle.
 $coalPieces = @(
@@ -178,7 +203,7 @@ Add-Cube "lectern_base" @(17, 17.5, 0.75) @(23, 18.25, 6.25) "wood"
 Add-Cube "lectern_left_support" @(17.5, 18.25, 3.25) @(19, 20.25, 5.25) "wood"
 Add-Cube "lectern_right_support" @(21, 18.25, 3.25) @(22.5, 20.25, 5.25) "wood"
 $lecternSlope = @{ origin = @(20, 20.5, 3.75); axis = "x"; angle = -22.5 }
-Add-Cube "lectern_board" @(17, 20, 1) @(23, 20.75, 6.5) "wood" @{} $lecternSlope
+Add-Cube "lectern_board" @(17, 20, 1.75) @(23, 20.75, 6.5) "wood" @{} $lecternSlope
 Add-Cube "lectern_lip" @(17, 19.5, 1) @(23, 20.5, 1.75) "wood" @{} $lecternSlope
 
 $model = [ordered]@{
@@ -204,30 +229,131 @@ $model = [ordered]@{
     elements = $elements
 }
 
-foreach ($element in $elements) {
-    if ($element.from.Count -ne 3 -or $element.to.Count -ne 3) {
-        throw "Element '$($element.name)' must have exactly three from/to coordinates."
-    }
-    foreach ($face in $element.faces.Values) {
-        if ($face.uv.Count -ne 4) {
-            throw "Element '$($element.name)' has a face without exactly four UV coordinates: $($face.uv -join ', ')."
+function Assert-ModelElements {
+    param($ModelElements)
+
+    $validElementAngles = @(-45, -22.5, 0, 22.5, 45)
+    $validFaceRotations = @(0, 90, 180, 270)
+    $names = [System.Collections.Generic.HashSet[string]]::new()
+    foreach ($element in $ModelElements) {
+        if (-not $names.Add($element.name)) {
+            throw "Duplicate model element name '$($element.name)'."
         }
-        if (($face.uv | Measure-Object -Minimum).Minimum -lt 0 -or
-            ($face.uv | Measure-Object -Maximum).Maximum -gt 16) {
-            throw "Element '$($element.name)' has UV coordinates outside the 0..16 texture area: $($face.uv -join ', ')."
+        if ($element.from.Count -ne 3 -or $element.to.Count -ne 3) {
+            throw "Element '$($element.name)' must have exactly three from/to coordinates."
+        }
+        for ($axis = 0; $axis -lt 3; $axis++) {
+            if ($element.from[$axis] -ge $element.to[$axis]) {
+                throw "Element '$($element.name)' has an empty or inverted axis $axis."
+            }
+            if ($element.from[$axis] -lt -16 -or $element.to[$axis] -gt 32) {
+                throw "Element '$($element.name)' exceeds Minecraft's -16..32 model coordinate range."
+            }
+        }
+        if ($null -ne $element.rotation) {
+            if ($element.rotation.origin.Count -ne 3 -or $element.rotation.axis -notin @("x", "y", "z") -or
+                [double]$element.rotation.angle -notin $validElementAngles) {
+                throw "Element '$($element.name)' has an invalid Minecraft element rotation."
+            }
+        }
+
+        foreach ($faceProperty in $element.faces.GetEnumerator()) {
+            $faceName = $faceProperty.Key
+            $face = $faceProperty.Value
+            if ($face.uv.Count -ne 4) {
+                throw "Element '$($element.name)' has a face without exactly four UV coordinates: $($face.uv -join ', ')."
+            }
+            if (($face.uv | Measure-Object -Minimum).Minimum -lt 0 -or
+                ($face.uv | Measure-Object -Maximum).Maximum -gt 16) {
+                throw "Element '$($element.name)' has UV coordinates outside the 0..16 texture area: $($face.uv -join ', ')."
+            }
+
+            $expectedSize = Get-FaceSize $element.from $element.to $faceName
+            $actualWidth = [Math]::Abs($face.uv[2] - $face.uv[0])
+            $actualHeight = [Math]::Abs($face.uv[3] - $face.uv[1])
+            $faceRotation = if ($null -ne $face.rotation) { [int]$face.rotation } else { 0 }
+            if ($faceRotation -notin $validFaceRotations) {
+                throw "Element '$($element.name)' face '$faceName' has invalid UV rotation $faceRotation."
+            }
+            $expectedUvSize = if (($faceRotation % 180) -eq 0) {
+                $expectedSize
+            } else {
+                @($expectedSize[1], $expectedSize[0])
+            }
+            if ([Math]::Abs($actualWidth - $expectedUvSize[0]) -gt 0.0001 -or
+                [Math]::Abs($actualHeight - $expectedUvSize[1]) -gt 0.0001) {
+                throw "Element '$($element.name)' face '$faceName' breaks the one-texel-per-model-unit UV scale."
+            }
         }
     }
 }
 
-function Write-Model {
-    param([string]$Path)
+function Assert-NoCoplanarFaceOverlaps {
+    param($ModelElements)
+
+    $faceBounds = [System.Collections.Generic.List[object]]::new()
+    foreach ($element in $ModelElements) {
+        # Angled pieces need polygon-level intersection tests. Their authored
+        # bounds are intentionally kept separate, so only axis-aligned pieces
+        # are checked here for the z-fighting regression this model had.
+        if ($null -ne $element.rotation) { continue }
+        foreach ($faceName in $element.faces.Keys) {
+            $bounds = switch ($faceName) {
+                "north" { @($element.from[2], $element.from[0], $element.to[0], $element.from[1], $element.to[1]) }
+                "south" { @($element.to[2], $element.from[0], $element.to[0], $element.from[1], $element.to[1]) }
+                "west" { @($element.from[0], $element.from[2], $element.to[2], $element.from[1], $element.to[1]) }
+                "east" { @($element.to[0], $element.from[2], $element.to[2], $element.from[1], $element.to[1]) }
+                "down" { @($element.from[1], $element.from[0], $element.to[0], $element.from[2], $element.to[2]) }
+                "up" { @($element.to[1], $element.from[0], $element.to[0], $element.from[2], $element.to[2]) }
+            }
+            $faceBounds.Add([ordered]@{
+                element = $element.name
+                face = $faceName
+                plane = [double]$bounds[0]
+                minA = [double]$bounds[1]
+                maxA = [double]$bounds[2]
+                minB = [double]$bounds[3]
+                maxB = [double]$bounds[4]
+            })
+        }
+    }
+
+    for ($i = 0; $i -lt $faceBounds.Count; $i++) {
+        for ($j = $i + 1; $j -lt $faceBounds.Count; $j++) {
+            $left = $faceBounds[$i]
+            $right = $faceBounds[$j]
+            if ($left.face -ne $right.face -or [Math]::Abs($left.plane - $right.plane) -gt 0.0001) {
+                continue
+            }
+            $overlapA = [Math]::Min($left.maxA, $right.maxA) - [Math]::Max($left.minA, $right.minA)
+            $overlapB = [Math]::Min($left.maxB, $right.maxB) - [Math]::Max($left.minB, $right.minB)
+            if ($overlapA -gt 0.0001 -and $overlapB -gt 0.0001) {
+                throw "Coplanar faces overlap: '$($left.element)'/$($left.face) and '$($right.element)'/$($right.face)."
+            }
+        }
+    }
+}
+
+function Write-JsonFile {
+    param(
+        [string]$Path,
+        $Content
+    )
 
     $absoluteOutput = [System.IO.Path]::GetFullPath((Join-Path (Get-Location) $Path))
     [System.IO.Directory]::CreateDirectory([System.IO.Path]::GetDirectoryName($absoluteOutput)) | Out-Null
     [System.IO.File]::WriteAllText(
         $absoluteOutput,
-        ($model | ConvertTo-Json -Depth 20),
+        ($Content | ConvertTo-Json -Depth 20),
         [System.Text.UTF8Encoding]::new($false))
+}
+
+function Write-Model {
+    param([string]$Path)
+
+    Assert-ModelElements $model.elements
+    Assert-NoCoplanarFaceOverlaps $model.elements
+    Write-JsonFile $Path $model
 }
 
 function Rotate-Point {
@@ -264,7 +390,24 @@ function New-RotatedElements {
             [Math]::Max($fromPoint[2], $toPoint[2]))
         $newFaces = [ordered]@{}
         foreach ($face in $sourceElement.faces.Keys) {
-            $newFaces[(Rotate-Face $face $Turns)] = $sourceElement.faces[$face]
+            $rotatedFace = Rotate-Face $face $Turns
+            $sourceFace = $sourceElement.faces[$face]
+            $newFace = [ordered]@{
+                uv = $sourceFace.uv
+                texture = $sourceFace.texture
+            }
+            # Horizontal faces swap their model-space axes on quarter turns.
+            # Rotate the UV with the object instead of stretching the texture or
+            # making wood grain and masonry details remain fixed to the world.
+            if ($rotatedFace -in @("up", "down")) {
+                $baseRotation = if ($null -ne $sourceFace.rotation) { [int]$sourceFace.rotation } else { 0 }
+                $direction = if ($rotatedFace -eq "up") { 1 } else { -1 }
+                $faceRotation = (($baseRotation + ($direction * $Turns * 90)) % 360 + 360) % 360
+                if ($faceRotation -ne 0) {
+                    $newFace.rotation = $faceRotation
+                }
+            }
+            $newFaces[$rotatedFace] = $newFace
         }
         $newElement = [ordered]@{
             name = $sourceElement.name
@@ -310,6 +453,27 @@ function Write-ModelSet {
     $model.elements = $northElements
 }
 
+function Write-TextureOverrideModelSet {
+    param(
+        [string]$BaseNorthPath,
+        [string]$VariantNorthPath,
+        [string]$CoalTexture
+    )
+
+    $baseStem = [System.IO.Path]::GetFileNameWithoutExtension($BaseNorthPath)
+    $variantDirectory = [System.IO.Path]::GetDirectoryName($VariantNorthPath)
+    $variantStem = [System.IO.Path]::GetFileNameWithoutExtension($VariantNorthPath)
+    foreach ($suffix in @("", "_east", "_south", "_west")) {
+        $variant = [ordered]@{
+            parent = "vivariumlibera:block/$baseStem$suffix"
+            textures = [ordered]@{
+                coal = $CoalTexture
+            }
+        }
+        Write-JsonFile (Join-Path $variantDirectory "$variantStem$suffix.json") $variant
+    }
+}
+
 function New-InventoryElements {
     param($Source)
     $inventoryElements = [System.Collections.Generic.List[object]]::new()
@@ -341,11 +505,8 @@ $worldElements = $model.elements
 $model.elements = New-InventoryElements $worldElements
 Write-Model $InventoryOutputPath
 $model.elements = $worldElements
-$model.textures.coal = "vivariumlibera:block/alchemy_table/coal_lit"
-Write-ModelSet $LitOutputPath
 $elements.RemoveRange($lecternStart, $elements.Count - $lecternStart)
 $model.elements = $elements
-$model.textures.coal = "vivariumlibera:block/alchemy_table/coal"
 Write-ModelSet $NoLecternOutputPath
-$model.textures.coal = "vivariumlibera:block/alchemy_table/coal_lit"
-Write-ModelSet $NoLecternLitOutputPath
+Write-TextureOverrideModelSet $OutputPath $LitOutputPath "vivariumlibera:block/alchemy_table/coal_lit"
+Write-TextureOverrideModelSet $NoLecternOutputPath $NoLecternLitOutputPath "vivariumlibera:block/alchemy_table/coal_lit"

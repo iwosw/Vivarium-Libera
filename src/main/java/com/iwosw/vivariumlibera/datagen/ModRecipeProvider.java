@@ -8,6 +8,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 
@@ -98,6 +99,30 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("S")
                 .define('I', Items.IRON_INGOT)
                 .define('S', Items.STICK)
+                .unlockedBy("has_iron", has(Items.IRON_INGOT))
+                .save(recipeOutput);
+
+        // Vial: 3 glass + clay -> 3 vials
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VIAL.get(), 3)
+                .pattern("GCG")
+                .pattern(" G ")
+                .define('G', Items.GLASS)
+                .define('C', Items.CLAY_BALL)
+                .unlockedBy("has_glass", has(Items.GLASS))
+                .save(recipeOutput);
+
+        // Sawdust: any planks + knife -> 4
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SAWDUST.get(), 4)
+                .requires(ItemTags.PLANKS)
+                .requires(ModItems.KNIFE.get())
+                .unlockedBy("has_knife", has(ModItems.KNIFE.get()))
+                .save(recipeOutput);
+
+        // Alchemy cauldron: 5 iron ingots
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ALCHEMY_CAULDRON.get())
+                .pattern("I I")
+                .pattern("III")
+                .define('I', Items.IRON_INGOT)
                 .unlockedBy("has_iron", has(Items.IRON_INGOT))
                 .save(recipeOutput);
 
