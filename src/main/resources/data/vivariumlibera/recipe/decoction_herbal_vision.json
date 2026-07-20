@@ -1,0 +1,10 @@
+{
+  "type": "vivariumlibera:decoction",
+  "liquid": "water",
+  "ingredients": [
+    { "item": "vivariumlibera:eyebright_cut" },
+    { "item": "vivariumlibera:mint_cut" }
+  ],
+  "cook_time": 400,
+  "result": { "decoction": "herbal_vision" }
+}

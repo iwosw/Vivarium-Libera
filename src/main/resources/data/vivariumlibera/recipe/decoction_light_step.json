@@ -1,0 +1,10 @@
+{
+  "type": "vivariumlibera:decoction",
+  "liquid": "water",
+  "strong_fire": true,
+  "ingredients": [
+    { "item": "vivariumlibera:fireweed_cut" }
+  ],
+  "cook_time": 600,
+  "result": { "decoction": "light_step" }
+}
