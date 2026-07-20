@@ -1,8 +1,10 @@
 package com.iwosw.vivariumlibera.registry;
 
 import com.iwosw.vivariumlibera.VivariumLibera;
+import com.iwosw.vivariumlibera.item.DecoctionItem;
 import com.iwosw.vivariumlibera.item.HerbalistBookItem;
 import com.iwosw.vivariumlibera.item.KnifeItem;
+import com.iwosw.vivariumlibera.item.TooltipItem;
 import java.util.List;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.food.FoodProperties;
@@ -104,6 +106,12 @@ public final class ModItems {
     public static final DeferredItem<Item> PLUM_RIPE = ITEMS.register("plum_ripe", () -> new Item(new Item.Properties().food(RIPE_PLUM_FOOD)));
     public static final DeferredItem<Item> POISON_BOTTLE = registerSimpleItem("poison_bottle");
     public static final DeferredItem<Item> HERBAL_POWDER = registerSimpleItem("herbal_powder");
+    public static final DeferredItem<Item> VIAL = ITEMS.register("vial", () -> new TooltipItem(new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> SAWDUST = ITEMS.register("sawdust", () -> new TooltipItem(new Item.Properties()));
+    public static final DeferredItem<Item> ALCHEMY_CAULDRON = ITEMS.register("alchemy_cauldron",
+            () -> new TooltipItem(new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<DecoctionItem> DECOCTION = ITEMS.register("decoction",
+            () -> new DecoctionItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<BlockItem> JUG = registerBlockItem("jug", ModBlocks.JUG);
     public static final DeferredItem<BlockItem> WATER_JUG_EMPTY = registerBlockItem("water_jug_empty", ModBlocks.WATER_JUG_EMPTY);
     public static final DeferredItem<BlockItem> WATER_JUG_FULL = registerBlockItem("water_jug_full", ModBlocks.WATER_JUG_FULL);
@@ -193,6 +201,12 @@ public final class ModItems {
             PLUM_RIPE,
             POISON_BOTTLE,
             HERBAL_POWDER);
+
+    public static final List<DeferredItem<? extends Item>> ALCHEMY_ITEMS = List.of(
+            ALCHEMY_CAULDRON,
+            VIAL,
+            SAWDUST,
+            DECOCTION);
 
     public static final List<DeferredItem<BlockItem>> JUG_ITEMS = List.of(
             JUG,
