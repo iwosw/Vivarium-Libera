@@ -1,0 +1,9 @@
+{
+  "type": "vivariumlibera:decoction",
+  "liquid": "wine",
+  "ingredients": [
+    { "item": "vivariumlibera:henbane_cut" }
+  ],
+  "cook_time": 400,
+  "result": { "decoction": "stupor" }
+}

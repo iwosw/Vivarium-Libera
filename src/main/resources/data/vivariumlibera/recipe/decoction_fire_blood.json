@@ -1,0 +1,10 @@
+{
+  "type": "vivariumlibera:decoction",
+  "liquid": "oil",
+  "strong_fire": true,
+  "ingredients": [
+    { "item": "vivariumlibera:lycoris" }
+  ],
+  "cook_time": 600,
+  "result": { "decoction": "fire_blood" }
+}

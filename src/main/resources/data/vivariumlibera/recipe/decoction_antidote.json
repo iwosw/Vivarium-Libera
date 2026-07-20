@@ -1,0 +1,10 @@
+{
+  "type": "vivariumlibera:decoction",
+  "liquid": "water",
+  "ingredients": [
+    { "item": "vivariumlibera:yarrow_cut" },
+    { "item": "vivariumlibera:sage_cut" }
+  ],
+  "cook_time": 400,
+  "result": { "decoction": "antidote" }
+}

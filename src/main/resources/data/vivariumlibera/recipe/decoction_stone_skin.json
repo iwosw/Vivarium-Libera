@@ -1,0 +1,10 @@
+{
+  "type": "vivariumlibera:decoction",
+  "liquid": "water",
+  "ingredients": [
+    { "item": "vivariumlibera:comfrey_cut" },
+    { "item": "vivariumlibera:thistle_cut" }
+  ],
+  "cook_time": 400,
+  "result": { "decoction": "stone_skin" }
+}
