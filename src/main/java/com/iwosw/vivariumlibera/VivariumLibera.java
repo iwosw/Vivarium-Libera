@@ -2,9 +2,13 @@ package com.iwosw.vivariumlibera;
 
 import com.iwosw.vivariumlibera.registry.ModBlockEntities;
 import com.iwosw.vivariumlibera.registry.ModBlocks;
+import com.iwosw.vivariumlibera.effect.ModEffects;
 import com.iwosw.vivariumlibera.registry.ModCreativeTabs;
+import com.iwosw.vivariumlibera.registry.ModDataComponents;
 import com.iwosw.vivariumlibera.registry.ModFeatures;
 import com.iwosw.vivariumlibera.registry.ModItems;
+import com.iwosw.vivariumlibera.registry.ModMenuTypes;
+import com.iwosw.vivariumlibera.registry.ModRecipes;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.effect.MobEffects;
 import net.neoforged.bus.api.IEventBus;
@@ -24,7 +28,11 @@ public final class VivariumLibera {
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModItems.register(modEventBus);
+        ModDataComponents.register(modEventBus);
+        ModEffects.register(modEventBus);
         ModFeatures.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         NeoForge.EVENT_BUS.addListener(this::keepPoisonAfterMilk);
 
