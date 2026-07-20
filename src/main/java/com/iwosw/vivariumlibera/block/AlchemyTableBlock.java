@@ -2,6 +2,7 @@ package com.iwosw.vivariumlibera.block;
 
 import com.iwosw.vivariumlibera.block.entity.AlchemyTableBlockEntity;
 import com.iwosw.vivariumlibera.block.entity.AlchemyTablePartBlockEntity;
+import com.iwosw.vivariumlibera.registry.ModBlockEntities;
 import com.iwosw.vivariumlibera.registry.ModItems;
 import com.iwosw.vivariumlibera.registry.ModBlocks;
 import com.mojang.serialization.MapCodec;
@@ -9,6 +10,7 @@ import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -31,6 +33,8 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -89,10 +93,20 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
         return new AlchemyTableBlockEntity(pos, state);
     }
 
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        if (level.isClientSide()) {
+            return null;
+        }
+        return createTickerHelper(type, ModBlockEntities.ALCHEMY_TABLE.get(),
+                (tickLevel, pos, tickState, table) -> AlchemyTableBlockEntity.serverTick(tickLevel, pos, tickState, table));
+    }
+
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState state = defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-        for (BlockPos partPos : getPartPositions(context.getClickedPos(), state)) {
+        for (BlockPos partPos : getPartPositions(context.getClickedPos())) {
             if (!context.getLevel().getBlockState(partPos).canBeReplaced(context)) {
                 return null;
             }
@@ -122,13 +136,65 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
         }
 
         if (stack.is(Items.FLINT_AND_STEEL) && isCoalHit(state, pos, hitResult)) {
-            if (!state.getValue(LIT) && !level.isClientSide()) {
+            if (!level.isClientSide() && table.canIgnite() && table.ignite()) {
                 level.setBlock(pos, state.setValue(LIT, true), Block.UPDATE_ALL);
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F,
                         level.getRandom().nextFloat() * 0.4F + 0.8F);
                 level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
                 stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
                 player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        if (stack.is(ModItems.ALCHEMY_CAULDRON.get()) && isCoalHit(state, pos, hitResult)) {
+            if (!level.isClientSide() && table.placeCauldron()) {
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+                level.playSound(null, pos, SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 0.9F, 0.9F);
+                level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        if (isFullJug(stack) && isCoalHit(state, pos, hitResult)) {
+            if (!level.isClientSide()) {
+                if (!table.hasCauldron()) {
+                    player.displayClientMessage(
+                            Component.translatable("message.vivariumlibera.alchemy_table.need_cauldron"), true);
+                    return ItemInteractionResult.sidedSuccess(false);
+                }
+                ItemStack emptied = table.tryFillFromJug(stack);
+                if (!emptied.isEmpty()) {
+                    stack.shrink(1);
+                    if (!player.addItem(emptied)) {
+                        Block.popResource(level, pos, emptied);
+                    }
+                    level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    level.gameEvent(player, GameEvent.FLUID_PLACE, pos);
+                }
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        if (stack.is(ModItems.SAWDUST.get()) && isCoalHit(state, pos, hitResult)) {
+            if (!level.isClientSide() && table.strengthenFire()) {
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+                level.playSound(null, pos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 0.6F, 1.4F);
+                level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        if (AlchemyTableBlockEntity.getBurnDuration(stack) > 0 && isCoalHit(state, pos, hitResult)) {
+            if (!level.isClientSide() && table.insertFuel(stack)) {
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+                level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.8F, 0.9F);
             }
             return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
@@ -168,8 +234,8 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
             return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
 
-        if (level.isClientSide()) {
-            openAlchemyTableScreen(pos);
+        if (!level.isClientSide()) {
+            player.openMenu(table, pos);
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide());
     }
@@ -185,12 +251,17 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
             return InteractionResult.PASS;
         }
 
-        if (player.isShiftKeyDown() && table.hasJug() && isJugHit(state, pos, hitResult)) {
+        if (player.isShiftKeyDown() && table.hasCauldron() && isCoalHit(state, pos, hitResult)) {
+            if (!level.isClientSide() && table.removeCauldron()) {
+                returnStoredItem(level, pos, player, new ItemStack(ModItems.ALCHEMY_CAULDRON.get()));
+                level.playSound(null, pos, SoundEvents.LANTERN_BREAK, SoundSource.BLOCKS, 0.7F, 1.0F);
+            }
+        } else if (player.isShiftKeyDown() && table.hasJug() && isJugHit(state, pos, hitResult)) {
             returnJug(level, pos, player, table);
         } else if (player.isShiftKeyDown() && table.hasBook() && isLecternHit(state, pos, hitResult)) {
             returnBook(level, pos, player, table);
-        } else if (level.isClientSide()) {
-            openAlchemyTableScreen(pos);
+        } else if (!level.isClientSide()) {
+            player.openMenu(table, pos);
         }
 
         return InteractionResult.sidedSuccess(level.isClientSide());
@@ -199,7 +270,7 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!state.is(newState.getBlock()) && level.getBlockEntity(pos) instanceof AlchemyTableBlockEntity table) {
-            removePartBlocks(level, pos, state);
+            removePartBlocks(level, pos);
             table.dropContents(level, pos);
         }
         super.onRemove(state, level, pos, newState, movedByPiston);
@@ -265,13 +336,29 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
         double y = pos.getY() + 1.27;
         double z = pos.getZ() + world[1];
 
+        AlchemyTableBlockEntity table = level.getBlockEntity(pos) instanceof AlchemyTableBlockEntity be ? be : null;
+        boolean strong = table != null && table.isStrongFire();
         level.addParticle(ParticleTypes.SMOKE, x, y + 0.08, z, 0.0, 0.025, 0.0);
         if (random.nextInt(3) == 0) {
-            level.addParticle(ParticleTypes.FLAME, x, y, z, 0.0, 0.012, 0.0);
+            level.addParticle(strong ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME, x, y, z, 0.0, 0.012, 0.0);
         }
         if (random.nextInt(12) == 0) {
             level.playLocalSound(x, y, z, SoundEvents.FIRE_AMBIENT, SoundSource.BLOCKS,
                     0.35F, 0.9F + random.nextFloat() * 0.2F, false);
+        }
+
+        // Steam rising from the cauldron while liquid simmers over the fire.
+        if (table != null && table.hasCauldron() && table.hasLiquid()) {
+            double steamLocalX = 0.875 + (random.nextDouble() - 0.5) * 0.4;
+            double steamLocalZ = 0.8125 + (random.nextDouble() - 0.5) * 0.4;
+            double[] steamWorld = modelToWorld(state.getValue(FACING), steamLocalX, steamLocalZ);
+            level.addParticle(ParticleTypes.WHITE_SMOKE,
+                    pos.getX() + steamWorld[0], pos.getY() + 1.82, pos.getZ() + steamWorld[1],
+                    0.0, 0.03, 0.0);
+            if (random.nextInt(20) == 0) {
+                level.playLocalSound(x, pos.getY() + 1.8, z, SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT,
+                        SoundSource.BLOCKS, 0.25F, 1.4F + random.nextFloat() * 0.3F, false);
+            }
         }
     }
 
@@ -289,7 +376,7 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
         }
     }
 
-    private static List<BlockPos> getPartPositions(BlockPos masterPos, BlockState state) {
+    private static List<BlockPos> getPartPositions(BlockPos masterPos) {
         List<BlockPos> positions = new ArrayList<>(3);
         for (int x = 0; x <= 1; x++) {
             for (int z = 0; z <= 1; z++) {
@@ -303,7 +390,7 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
     }
 
     private static void placePartBlocks(Level level, BlockPos masterPos, BlockState state) {
-        List<BlockPos> desiredParts = getPartPositions(masterPos, state);
+        List<BlockPos> desiredParts = getPartPositions(masterPos);
         removeStalePartBlocks(level, masterPos, desiredParts);
         for (BlockPos partPos : desiredParts) {
             BlockState current = level.getBlockState(partPos);
@@ -323,7 +410,7 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
         }
     }
 
-    private static void removePartBlocks(Level level, BlockPos masterPos, BlockState state) {
+    private static void removePartBlocks(Level level, BlockPos masterPos) {
         removeStalePartBlocks(level, masterPos, List.of());
     }
 
@@ -376,6 +463,12 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
 
     private static boolean isJug(ItemStack stack) {
         return ModItems.JUG_ITEMS.stream().anyMatch(jug -> stack.is(jug.get()));
+    }
+
+    private static boolean isFullJug(ItemStack stack) {
+        return stack.is(ModItems.WATER_JUG_FULL.get())
+                || stack.is(ModItems.OIL_JUG_FULL.get())
+                || stack.is(ModItems.WINE_JUG_FULL.get());
     }
 
     private static boolean isCoalHit(BlockState state, BlockPos pos, BlockHitResult hitResult) {
@@ -453,15 +546,5 @@ public final class AlchemyTableBlock extends BaseEntityBlock {
             case WEST -> new double[]{localZ, 2.0 - localX};
             default -> new double[]{localX, localZ};
         };
-    }
-
-    private static void openAlchemyTableScreen(BlockPos pos) {
-        try {
-            Class.forName("com.iwosw.vivariumlibera.client.AlchemyTableScreen")
-                    .getMethod("open", BlockPos.class)
-                    .invoke(null, pos);
-        } catch (ReflectiveOperationException ignored) {
-            // Dedicated servers do not load client screen classes.
-        }
     }
 }
