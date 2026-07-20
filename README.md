@@ -49,7 +49,14 @@ Install the mod and GeckoLib on both the client and the server. Farmer's Delight
 - An animated mortar with block-entity processing for herbal ingredients.
 - A readable herbalist's book with an in-game reference screen.
 - Herbal powders, poison, and an expanding set of workshop recipes.
-- A multi-block alchemy table currently under active development.
+
+### Alchemy and decoctions
+
+- An alchemy table with its own screen: pour a jug into the cauldron, add up to three ground herbs, light the hearth with flint and steel, and watch the brew progress.
+- Water, oil, and wine each yield different results; one jug fills three portions.
+- Sawdust turns the hearth into a strong blue flame, which the harder recipes require.
+- Six decoctions — Herbal Vision, Stone Skin, Light Step, Antidote, Stupor, and Fire Blood — bottled into vials.
+- Recipes, brew times, and flame requirements are shown in JEI.
 
 ### Nature and decoration
 
@@ -105,7 +112,6 @@ Useful development tasks:
 | `src/main/resources/assets/vivariumlibera` | Textures, models, blockstates, animations, geometry, and localization |
 | `src/main/resources/data` | Recipes, tags, loot tables, data maps, and world-generation data |
 | `src/generated/resources` | Data-generator output included in development builds |
-| `docs` | Herbalist reference material, concepts, and implementation notes |
 
 ## Support and contributing
 

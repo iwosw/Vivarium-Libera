@@ -6,9 +6,12 @@ This project is in early alpha; features and compatibility may change before the
 
 ## Unreleased
 
-### In development
+### Added
 
-- Multi-block alchemy table with a dedicated screen, renderer, recipes, and book integration.
+- Alchemy table brewing: cauldron liquids (water, oil, wine), fuel and flame strength, and a timed brew with a progress screen.
+- Alchemy cauldron, vial, and sawdust items, plus crafting recipes for each.
+- Six decoctions — Herbal Vision, Stone Skin, Light Step, Antidote, Stupor, and Fire Blood — with matching mob effects.
+- JEI category showing decoction ingredients, brew time, and strong-fire requirements.
 
 ## 0.1.0 — Alpha
 
