@@ -10,3 +10,6 @@ runs/
 
 # OS
 Thumbs.db
+
+# Local docs / concepts
+docs/
