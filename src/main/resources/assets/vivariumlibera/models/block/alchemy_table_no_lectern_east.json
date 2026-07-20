@@ -163,7 +163,8 @@
                                                              9,
                                                              16
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -172,7 +173,8 @@
                                                                9,
                                                                16
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -223,7 +225,8 @@
                                                              9,
                                                              16
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -232,7 +235,8 @@
                                                                9,
                                                                16
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -283,7 +287,8 @@
                                                              16,
                                                              16
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -292,7 +297,8 @@
                                                                16,
                                                                16
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -343,7 +349,8 @@
                                                              16,
                                                              16
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -352,7 +359,8 @@
                                                                16,
                                                                16
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -412,7 +420,8 @@
                                                              14,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -421,7 +430,8 @@
                                                                14,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -481,7 +491,8 @@
                                                              11,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -490,7 +501,8 @@
                                                                11,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -550,7 +562,8 @@
                                                              8,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -559,7 +572,8 @@
                                                                8,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -619,7 +633,8 @@
                                                              13,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -628,7 +643,8 @@
                                                                13,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -688,7 +704,8 @@
                                                              6,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -697,7 +714,8 @@
                                                                6,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -757,7 +775,8 @@
                                                              14,
                                                              8
                                                          ],
-                                                  "texture":  "#soot"
+                                                  "texture":  "#soot",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -766,12 +785,13 @@
                                                                14,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
                      {
-                         "name":  "niche_back_0",
+                         "name":  "niche_back_lower_0",
                          "from":  [
                                       24,
                                       1,
@@ -779,7 +799,7 @@
                                   ],
                          "to":  [
                                     25,
-                                    12,
+                                    8.5,
                                     23
                                 ],
                          "faces":  {
@@ -788,7 +808,7 @@
                                                                0,
                                                                1,
                                                                14,
-                                                               12
+                                                               8.5
                                                            ],
                                                     "texture":  "#soot"
                                                 },
@@ -797,7 +817,7 @@
                                                                 7,
                                                                 1,
                                                                 8,
-                                                                12
+                                                                8.5
                                                             ],
                                                      "texture":  "#plaster"
                                                  },
@@ -806,7 +826,7 @@
                                                                0,
                                                                1,
                                                                14,
-                                                               12
+                                                               8.5
                                                            ],
                                                     "texture":  "#plaster"
                                                 },
@@ -815,7 +835,7 @@
                                                                 7,
                                                                 1,
                                                                 8,
-                                                                12
+                                                                8.5
                                                             ],
                                                      "texture":  "#plaster"
                                                  },
@@ -826,7 +846,8 @@
                                                              14,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -835,7 +856,150 @@
                                                                14,
                                                                8
                                                            ],
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
+                                                }
+                                   }
+                     },
+                     {
+                         "name":  "niche_back_middle_0",
+                         "from":  [
+                                      24,
+                                      8.5,
+                                      11
+                                  ],
+                         "to":  [
+                                    25,
+                                    10.5,
+                                    21
+                                ],
+                         "faces":  {
+                                       "east":  {
+                                                    "uv":  [
+                                                               4,
+                                                               8.5,
+                                                               14,
+                                                               10.5
+                                                           ],
+                                                    "texture":  "#soot"
+                                                },
+                                       "south":  {
+                                                     "uv":  [
+                                                                7,
+                                                                8.5,
+                                                                8,
+                                                                10.5
+                                                            ],
+                                                     "texture":  "#plaster"
+                                                 },
+                                       "west":  {
+                                                    "uv":  [
+                                                               4,
+                                                               8.5,
+                                                               14,
+                                                               10.5
+                                                           ],
                                                     "texture":  "#plaster"
+                                                },
+                                       "north":  {
+                                                     "uv":  [
+                                                                7,
+                                                                8.5,
+                                                                8,
+                                                                10.5
+                                                            ],
+                                                     "texture":  "#plaster"
+                                                 },
+                                       "up":  {
+                                                  "uv":  [
+                                                             4,
+                                                             7,
+                                                             14,
+                                                             8
+                                                         ],
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
+                                              },
+                                       "down":  {
+                                                    "uv":  [
+                                                               4,
+                                                               7,
+                                                               14,
+                                                               8
+                                                           ],
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
+                                                }
+                                   }
+                     },
+                     {
+                         "name":  "niche_back_upper_0",
+                         "from":  [
+                                      24,
+                                      10.5,
+                                      13
+                                  ],
+                         "to":  [
+                                    25,
+                                    12,
+                                    19
+                                ],
+                         "faces":  {
+                                       "east":  {
+                                                    "uv":  [
+                                                               2,
+                                                               10.5,
+                                                               8,
+                                                               12
+                                                           ],
+                                                    "texture":  "#soot"
+                                                },
+                                       "south":  {
+                                                     "uv":  [
+                                                                7,
+                                                                10.5,
+                                                                8,
+                                                                12
+                                                            ],
+                                                     "texture":  "#plaster"
+                                                 },
+                                       "west":  {
+                                                    "uv":  [
+                                                               2,
+                                                               10.5,
+                                                               8,
+                                                               12
+                                                           ],
+                                                    "texture":  "#plaster"
+                                                },
+                                       "north":  {
+                                                     "uv":  [
+                                                                7,
+                                                                10.5,
+                                                                8,
+                                                                12
+                                                            ],
+                                                     "texture":  "#plaster"
+                                                 },
+                                       "up":  {
+                                                  "uv":  [
+                                                             2,
+                                                             7,
+                                                             8,
+                                                             8
+                                                         ],
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
+                                              },
+                                       "down":  {
+                                                    "uv":  [
+                                                               2,
+                                                               7,
+                                                               8,
+                                                               8
+                                                           ],
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -886,7 +1050,8 @@
                                                              14,
                                                              16
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -895,7 +1060,8 @@
                                                                14,
                                                                16
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -946,7 +1112,8 @@
                                                              14,
                                                              14
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -955,7 +1122,8 @@
                                                                14,
                                                                14
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -997,7 +1165,8 @@
                                                              16,
                                                              16
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1006,7 +1175,8 @@
                                                                16,
                                                                16
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1048,7 +1218,8 @@
                                                              16,
                                                              16
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1057,7 +1228,8 @@
                                                                16,
                                                                16
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1099,7 +1271,8 @@
                                                              16,
                                                              16
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1108,7 +1281,8 @@
                                                                16,
                                                                16
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1150,7 +1324,8 @@
                                                              16,
                                                              16
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1159,7 +1334,8 @@
                                                                16,
                                                                16
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1219,7 +1395,8 @@
                                                              9,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1228,7 +1405,8 @@
                                                                9,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1288,7 +1466,8 @@
                                                              16,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1297,7 +1476,8 @@
                                                                16,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1357,7 +1537,8 @@
                                                              11,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1366,7 +1547,8 @@
                                                                11,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1426,7 +1608,8 @@
                                                              8,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1435,7 +1618,8 @@
                                                                8,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1495,7 +1679,8 @@
                                                              14,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1504,7 +1689,8 @@
                                                                14,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1564,7 +1750,8 @@
                                                              13,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1573,7 +1760,8 @@
                                                                13,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1633,7 +1821,8 @@
                                                              6,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1642,7 +1831,8 @@
                                                                6,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1702,7 +1892,8 @@
                                                              15,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1711,7 +1902,8 @@
                                                                15,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1771,7 +1963,8 @@
                                                              4,
                                                              8
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1780,56 +1973,199 @@
                                                                4,
                                                                8
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
                      {
-                         "name":  "rear_niche_back_0",
+                         "name":  "rear_niche_back_lower_0",
                          "from":  [
                                       0,
                                       17.5,
-                                      9
+                                      11
                                   ],
                          "to":  [
                                     2,
-                                    25,
-                                    23
+                                    23,
+                                    21
                                 ],
                          "faces":  {
                                        "east":  {
                                                     "uv":  [
-                                                               0,
-                                                               8.5,
+                                                               4,
+                                                               6.5,
                                                                14,
-                                                               16
+                                                               12
                                                            ],
                                                     "texture":  "#soot"
                                                 },
                                        "south":  {
                                                      "uv":  [
                                                                 0,
-                                                                8.5,
+                                                                6.5,
                                                                 2,
-                                                                16
+                                                                12
                                                             ],
                                                      "texture":  "#plaster"
                                                  },
                                        "west":  {
                                                     "uv":  [
-                                                               0,
-                                                               8.5,
+                                                               4,
+                                                               6.5,
                                                                14,
-                                                               16
+                                                               12
                                                            ],
                                                     "texture":  "#plaster"
                                                 },
                                        "north":  {
                                                      "uv":  [
                                                                 0,
-                                                                8.5,
+                                                                6.5,
                                                                 2,
-                                                                16
+                                                                12
+                                                            ],
+                                                     "texture":  "#plaster"
+                                                 },
+                                       "up":  {
+                                                  "uv":  [
+                                                             4,
+                                                             0,
+                                                             14,
+                                                             2
+                                                         ],
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
+                                              },
+                                       "down":  {
+                                                    "uv":  [
+                                                               4,
+                                                               0,
+                                                               14,
+                                                               2
+                                                           ],
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
+                                                }
+                                   }
+                     },
+                     {
+                         "name":  "rear_niche_back_middle_0",
+                         "from":  [
+                                      0,
+                                      23,
+                                      13
+                                  ],
+                         "to":  [
+                                    2,
+                                    24,
+                                    19
+                                ],
+                         "faces":  {
+                                       "east":  {
+                                                    "uv":  [
+                                                               2,
+                                                               7,
+                                                               8,
+                                                               8
+                                                           ],
+                                                    "texture":  "#soot"
+                                                },
+                                       "south":  {
+                                                     "uv":  [
+                                                                0,
+                                                                7,
+                                                                2,
+                                                                8
+                                                            ],
+                                                     "texture":  "#plaster"
+                                                 },
+                                       "west":  {
+                                                    "uv":  [
+                                                               2,
+                                                               7,
+                                                               8,
+                                                               8
+                                                           ],
+                                                    "texture":  "#plaster"
+                                                },
+                                       "north":  {
+                                                     "uv":  [
+                                                                0,
+                                                                7,
+                                                                2,
+                                                                8
+                                                            ],
+                                                     "texture":  "#plaster"
+                                                 },
+                                       "up":  {
+                                                  "uv":  [
+                                                             2,
+                                                             0,
+                                                             8,
+                                                             2
+                                                         ],
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
+                                              },
+                                       "down":  {
+                                                    "uv":  [
+                                                               2,
+                                                               0,
+                                                               8,
+                                                               2
+                                                           ],
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
+                                                }
+                                   }
+                     },
+                     {
+                         "name":  "rear_niche_back_upper_0",
+                         "from":  [
+                                      0,
+                                      24,
+                                      15
+                                  ],
+                         "to":  [
+                                    2,
+                                    25,
+                                    17
+                                ],
+                         "faces":  {
+                                       "east":  {
+                                                    "uv":  [
+                                                               0,
+                                                               8,
+                                                               2,
+                                                               9
+                                                           ],
+                                                    "texture":  "#soot"
+                                                },
+                                       "south":  {
+                                                     "uv":  [
+                                                                0,
+                                                                8,
+                                                                2,
+                                                                9
+                                                            ],
+                                                     "texture":  "#plaster"
+                                                 },
+                                       "west":  {
+                                                    "uv":  [
+                                                               0,
+                                                               8,
+                                                               2,
+                                                               9
+                                                           ],
+                                                    "texture":  "#plaster"
+                                                },
+                                       "north":  {
+                                                     "uv":  [
+                                                                0,
+                                                                8,
+                                                                2,
+                                                                9
                                                             ],
                                                      "texture":  "#plaster"
                                                  },
@@ -1837,19 +2173,21 @@
                                                   "uv":  [
                                                              0,
                                                              0,
-                                                             14,
+                                                             2,
                                                              2
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
                                                                0,
                                                                0,
-                                                               14,
+                                                               2,
                                                                2
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1909,7 +2247,8 @@
                                                              12,
                                                              9
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1918,7 +2257,8 @@
                                                                12,
                                                                9
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -1978,7 +2318,8 @@
                                                              9,
                                                              10
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -1987,7 +2328,8 @@
                                                                9,
                                                                10
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2047,7 +2389,8 @@
                                                              6,
                                                              10
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2056,7 +2399,8 @@
                                                                6,
                                                                10
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2116,7 +2460,8 @@
                                                              7,
                                                              7
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2125,7 +2470,8 @@
                                                                7,
                                                                7
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2185,7 +2531,8 @@
                                                              8,
                                                              7
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2194,7 +2541,8 @@
                                                                8,
                                                                7
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2254,7 +2602,8 @@
                                                              9,
                                                              4
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2263,7 +2612,8 @@
                                                                9,
                                                                4
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2323,7 +2673,8 @@
                                                              6,
                                                              4
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2332,7 +2683,8 @@
                                                                6,
                                                                4
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2392,7 +2744,8 @@
                                                              12,
                                                              5
                                                          ],
-                                                  "texture":  "#plaster"
+                                                  "texture":  "#plaster",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2401,19 +2754,91 @@
                                                                12,
                                                                5
                                                            ],
-                                                    "texture":  "#plaster"
+                                                    "texture":  "#plaster",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
                      {
-                         "name":  "hearth_bed",
+                         "name":  "hearth_bed_front",
                          "from":  [
-                                      14,
+                                      22,
+                                      17.55,
+                                      9
+                                  ],
+                         "to":  [
+                                    23,
+                                    18,
+                                    19
+                                ],
+                         "faces":  {
+                                       "east":  {
+                                                    "uv":  [
+                                                               2,
+                                                               1.5500000000000007,
+                                                               12,
+                                                               2
+                                                           ],
+                                                    "texture":  "#coal"
+                                                },
+                                       "south":  {
+                                                     "uv":  [
+                                                                9,
+                                                                1.5500000000000007,
+                                                                10,
+                                                                2
+                                                            ],
+                                                     "texture":  "#coal"
+                                                 },
+                                       "west":  {
+                                                    "uv":  [
+                                                               2,
+                                                               1.5500000000000007,
+                                                               12,
+                                                               2
+                                                           ],
+                                                    "texture":  "#coal"
+                                                },
+                                       "north":  {
+                                                     "uv":  [
+                                                                9,
+                                                                1.5500000000000007,
+                                                                10,
+                                                                2
+                                                            ],
+                                                     "texture":  "#coal"
+                                                 },
+                                       "up":  {
+                                                  "uv":  [
+                                                             2,
+                                                             9,
+                                                             12,
+                                                             10
+                                                         ],
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
+                                              },
+                                       "down":  {
+                                                    "uv":  [
+                                                               2,
+                                                               9,
+                                                               12,
+                                                               10
+                                                           ],
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
+                                                }
+                                   }
+                     },
+                     {
+                         "name":  "hearth_bed_middle",
+                         "from":  [
+                                      15,
                                       17.55,
                                       7
                                   ],
                          "to":  [
-                                    23,
+                                    22,
                                     18,
                                     21
                                 ],
@@ -2429,9 +2854,9 @@
                                                 },
                                        "south":  {
                                                      "uv":  [
-                                                                1,
+                                                                0,
                                                                 1.5500000000000007,
-                                                                10,
+                                                                7,
                                                                 2
                                                             ],
                                                      "texture":  "#coal"
@@ -2447,9 +2872,9 @@
                                                 },
                                        "north":  {
                                                      "uv":  [
-                                                                1,
+                                                                0,
                                                                 1.5500000000000007,
-                                                                10,
+                                                                7,
                                                                 2
                                                             ],
                                                      "texture":  "#coal"
@@ -2457,20 +2882,93 @@
                                        "up":  {
                                                   "uv":  [
                                                              1,
-                                                             1,
+                                                             0,
                                                              15,
-                                                             10
+                                                             7
                                                          ],
-                                                  "texture":  "#coal"
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
                                                                1,
-                                                               1,
+                                                               0,
                                                                15,
-                                                               10
+                                                               7
+                                                           ],
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
+                                                }
+                                   }
+                     },
+                     {
+                         "name":  "hearth_bed_back",
+                         "from":  [
+                                      14,
+                                      17.55,
+                                      9
+                                  ],
+                         "to":  [
+                                    15,
+                                    18,
+                                    19
+                                ],
+                         "faces":  {
+                                       "east":  {
+                                                    "uv":  [
+                                                               2,
+                                                               1.5500000000000007,
+                                                               12,
+                                                               2
                                                            ],
                                                     "texture":  "#coal"
+                                                },
+                                       "south":  {
+                                                     "uv":  [
+                                                                1,
+                                                                1.5500000000000007,
+                                                                2,
+                                                                2
+                                                            ],
+                                                     "texture":  "#coal"
+                                                 },
+                                       "west":  {
+                                                    "uv":  [
+                                                               2,
+                                                               1.5500000000000007,
+                                                               12,
+                                                               2
+                                                           ],
+                                                    "texture":  "#coal"
+                                                },
+                                       "north":  {
+                                                     "uv":  [
+                                                                1,
+                                                                1.5500000000000007,
+                                                                2,
+                                                                2
+                                                            ],
+                                                     "texture":  "#coal"
+                                                 },
+                                       "up":  {
+                                                  "uv":  [
+                                                             2,
+                                                             1,
+                                                             12,
+                                                             2
+                                                         ],
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
+                                              },
+                                       "down":  {
+                                                    "uv":  [
+                                                               2,
+                                                               1,
+                                                               12,
+                                                               2
+                                                           ],
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2530,7 +3028,8 @@
                                                              10.5,
                                                              12
                                                          ],
-                                                  "texture":  "#coal"
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2539,7 +3038,8 @@
                                                                10.5,
                                                                12
                                                            ],
-                                                    "texture":  "#coal"
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2599,7 +3099,8 @@
                                                              13.75,
                                                              12
                                                          ],
-                                                  "texture":  "#coal"
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2608,7 +3109,8 @@
                                                                13.75,
                                                                12
                                                            ],
-                                                    "texture":  "#coal"
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2668,7 +3170,8 @@
                                                              3,
                                                              12.5
                                                          ],
-                                                  "texture":  "#coal"
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2677,7 +3180,8 @@
                                                                3,
                                                                12.5
                                                            ],
-                                                    "texture":  "#coal"
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2737,7 +3241,8 @@
                                                              6,
                                                              12.5
                                                          ],
-                                                  "texture":  "#coal"
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2746,7 +3251,8 @@
                                                                6,
                                                                12.5
                                                            ],
-                                                    "texture":  "#coal"
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2806,7 +3312,8 @@
                                                              12,
                                                              15.25
                                                          ],
-                                                  "texture":  "#coal"
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2815,7 +3322,8 @@
                                                                12,
                                                                15.25
                                                            ],
-                                                    "texture":  "#coal"
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2875,7 +3383,8 @@
                                                              15.5,
                                                              16
                                                          ],
-                                                  "texture":  "#coal"
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2884,7 +3393,8 @@
                                                                15.5,
                                                                16
                                                            ],
-                                                    "texture":  "#coal"
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -2944,7 +3454,8 @@
                                                              5,
                                                              15.75
                                                          ],
-                                                  "texture":  "#coal"
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -2953,7 +3464,8 @@
                                                                5,
                                                                15.75
                                                            ],
-                                                    "texture":  "#coal"
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -3013,7 +3525,8 @@
                                                              15,
                                                              14
                                                          ],
-                                                  "texture":  "#coal"
+                                                  "texture":  "#coal",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -3022,7 +3535,8 @@
                                                                15,
                                                                14
                                                            ],
-                                                    "texture":  "#coal"
+                                                    "texture":  "#coal",
+                                                    "rotation":  270
                                                 }
                                    }
                      },
@@ -3082,7 +3596,8 @@
                                                              14.5,
                                                              5
                                                          ],
-                                                  "texture":  "#log_end"
+                                                  "texture":  "#log_end",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -3091,7 +3606,8 @@
                                                                14.5,
                                                                5
                                                            ],
-                                                    "texture":  "#log_end"
+                                                    "texture":  "#log_end",
+                                                    "rotation":  270
                                                 }
                                    },
                          "rotation":  {
@@ -3161,7 +3677,8 @@
                                                              6.5,
                                                              5
                                                          ],
-                                                  "texture":  "#log_end"
+                                                  "texture":  "#log_end",
+                                                  "rotation":  90
                                               },
                                        "down":  {
                                                     "uv":  [
@@ -3170,7 +3687,8 @@
                                                                6.5,
                                                                5
                                                            ],
-                                                    "texture":  "#log_end"
+                                                    "texture":  "#log_end",
+                                                    "rotation":  270
                                                 }
                                    },
                          "rotation":  {
